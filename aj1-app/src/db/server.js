@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-    let message = "<h1>Hello world! From Server express.js!!!</h1>"
+    let message = "Hello world! From Server express.js!!!"
     res.status(200).send(message);
 });
 
