@@ -1,11 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios"
+import {useEffect, useState} from "react"
+
+const baseURL = "http://localhost:8080/"
 
 function App() {
+
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    axios.get(baseURL)
+      .then(res => {
+        setPost(res.message)
+      })
+  },[])
+
+  if(!post) return null;
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        HelloWorld from React
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -16,7 +33,11 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
+      </header>
+      <header className="App-header">
+        {/* HelloWorld from Server */}
+        {post.message}
       </header>
     </div>
   );
