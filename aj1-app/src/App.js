@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import axios from "axios"
 import {useEffect, useState} from "react"
@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     axios.get(baseURL)
       .then(res => {
-        setPost(res.message)
+        setPost(res.data)
       })
   },[])
 
@@ -37,7 +37,7 @@ function App() {
       </header>
       <header className="App-header">
         {/* HelloWorld from Server */}
-        {post.message}
+        {post}
       </header>
     </div>
   );
