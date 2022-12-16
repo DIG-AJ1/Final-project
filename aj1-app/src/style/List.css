@@ -1,0 +1,9 @@
+.cell{
+    width: 40%;
+    flex-flow: column;
+    padding: o.5em 1em;
+    margin: 5px auto;
+    color: #5d627b;
+    background: white;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.22);
+}

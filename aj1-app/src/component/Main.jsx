@@ -3,7 +3,7 @@ import List from "./List";
 
 export default function Main({setScreen}) {
     const state = ["aaa","bbb","ccc"];
-    const admin = 0;
+    const admin = 1;
     return(
         <div>
             <h1>
