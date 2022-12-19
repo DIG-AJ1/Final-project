@@ -1,4 +1,4 @@
-button {
+.log-btn {
     width: 100px;
     text-align: center;
     margin: 5px 10px;
@@ -9,6 +9,21 @@ button {
     border-radius: 5px;
 }
     
-button :hover {
+.log-btn :hover {
+    box-shadow: 0 0 10px 0 rgb(0, 140, 255) inset, 0 0 10px 4px rgb(0, 140, 255);
+}
+
+.hedder-btn {
+    width: 100px;
+    text-align: center;
+    margin: 5px 10px;
+    border-color: rgb(0, 140, 255);
+    color: rgb(0, 140, 255);
+    box-shadow: 0 0 40px 40px #fff inset, 0 0 0 0 #fff;
+    transition: all 150ms ease-in-out;  
+    border-radius: 5px;
+}
+    
+.hedder-btn :hover {
     box-shadow: 0 0 10px 0 rgb(0, 140, 255) inset, 0 0 10px 4px rgb(0, 140, 255);
 }

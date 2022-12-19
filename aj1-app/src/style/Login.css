@@ -16,6 +16,13 @@
     display: flex;
 }
 
+.intext:focus{
+    /* border: solid 2px #99FFFF; */
+    border: solid 2px rgba(67, 255, 255, 0.6);
+    outline: solid 3px rgba(143, 242, 255, 0.4);
+    /* outline: none; */
+}
+
 #pass{
     -webkit-text-security:disc;
 }
