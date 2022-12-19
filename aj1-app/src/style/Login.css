@@ -1,0 +1,29 @@
+.form{
+    width: 40%;
+    flex-flow: column;
+    padding: o.5em 1em;
+    margin: 5px auto;
+    color: #5d627b;
+    background: white;
+    border: solid;
+    border-width: 0.5px;
+    border-color: #5d627b;
+    border-radius: 3px;
+}
+
+.intext{
+    margin: 10px auto;
+    display: flex;
+}
+
+.intext:focus{
+    /* border: solid 2px #99FFFF; */
+    border: solid 2px rgba(67, 255, 255, 0.6);
+    outline: solid 3px rgba(143, 242, 255, 0.4);
+    /* outline: none; */
+}
+
+#pass{
+    -webkit-text-security:disc;
+}
+
