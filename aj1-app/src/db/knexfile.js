@@ -9,7 +9,7 @@ module.exports = {
     client: 'pg',
     connection: {
       user: process.env.POSTGRES_USER || "user",
-      database: process.env.POSTGRES_DB || "slackoverflow",
+      database: process.env.POSTGRES_DB || "finalproject",
       password: process.env.PASSWORD
     },
     migrations: {
