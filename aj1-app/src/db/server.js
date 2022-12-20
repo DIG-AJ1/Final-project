@@ -1,5 +1,4 @@
 require("dotenv").config();
-// const e = require("express");
 const express = require("express");
 // const db = require("./data");
 // const knex = require('./index');
