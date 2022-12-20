@@ -33,7 +33,7 @@ export default function Login({setScreen, screen}){
                     className="log-btn"
                     variant="primary"
                     onClick={() => {
-                        setScreen("main");
+                        setScreen("List");
                     }}
                 >
                     Login
