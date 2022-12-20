@@ -1,9 +1,9 @@
-// import logo from './logo.svg';
 import './App.css';
 import axios from "axios"
 import {useEffect, useState} from "react"
+import Convert from './component/Convert';
 
-const baseURL = "http://localhost:8080/"
+const baseURL = "http://localhost:80/"
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         HelloWorld from React
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -33,12 +33,13 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a> */}
+        </a> 
       </header>
       <header className="App-header">
-        {/* HelloWorld from Server */}
+        {/* HelloWorld from Server 
         {post}
-      </header>
+      </header> */}
+      <Convert />
     </div>
   );
 }
