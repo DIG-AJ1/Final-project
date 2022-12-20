@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "bootstrap/dist/css/bootstrap.min.css"
 
-export default function Hedder({setScreen,screen,admin,setDisp,state}) {
+export default function Hedder({setScreen,screen,admin}) {
   return (
     <>
       <Navbar bg="primary" variant="dark">
@@ -19,27 +19,22 @@ export default function Hedder({setScreen,screen,admin,setDisp,state}) {
               className="hedder-btn"
               onClick={() => {
                 console.log("***");
-                setScreen("Badge")
+                setScreen("List");
               }}
             >
-              badge
+              List
             </button>:
             null
         }
-        {
-            (screen === "List")?
-            <button
-              className='hedder-btn'
-                onClick={() => {
-                    setScreen("Login")
-                }}
-            >
-                Logout
-            </button>:
-            null
-        }
+        <button
+          className='hedder-btn'
+            onClick={() => {
+                setScreen("Login")
+            }}
+        >
+            Logout
+        </button>
       </Navbar>
     </>
   );
 }
-
