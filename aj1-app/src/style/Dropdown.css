@@ -1,0 +1,51 @@
+.drop-wrap {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  background: white;
+  width: 260px;
+  display: inline-block;
+  position: relative;
+  margin : 10px 15%;
+}
+
+.dropdown {
+  border: none;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #909090;
+  border-radius: 0;
+  width: 275px;
+  z-index: 2;
+  background: transparent;
+}
+
+.drop-wrap:after {
+  content: "\25bc";
+  font-size: 16px;
+  color: white;
+  background: #13b4ff;
+  width: 42px;
+  text-align: center;
+  line-height: 3.2em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+option {
+  border-bottom: 1px solid #eaeaea;
+  border-left: 3px solid white;
+  appearance: none;
+}
+
+option:hover {
+  background-color: white;
+  border-left: 3px solid #f3a1a1;
+}
