@@ -3,7 +3,7 @@ import axios from "axios"
 import {useEffect, useState} from "react"
 import Convert from './component/Convert';
 
-const baseURL = "http://localhost:8080/"
+const baseURL = "http://localhost:80/"
 
 function App() {
 

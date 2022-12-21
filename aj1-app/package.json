@@ -23,7 +23,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon src/db/server.js"
+    "server": "nodemon src/db/server.js",
+    "migrate-latest": "npx knex migrate:latest --knexfile src/db/knexfile.js",
+    "migrate-down": "npx knex migrate:down --knexfile src/db/knexfile.js",
+    "seed-data": "npx knex seed:run --knexfile src/db/knexfile.js",
+    "makeMigration": "knex migrate:make --knexfile src/db/knexfile.js",
+    "makeSeed": "knex seed:make --knexfile src/db/knexfile.js",
+    "rollback": "knex migrate:rollback --all --knexfile src/db/knexfile.js"
   },
   "eslintConfig": {
     "extends": [
