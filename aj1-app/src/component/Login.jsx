@@ -15,6 +15,16 @@ export default function Login({setScreen, screen, setUser}){
         token: "***"
     }
 
+    const baseURL = "http://localhost:8080/"
+
+    function getUser(data){
+        const result = fetch(`/login`,{
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        return result.json();
+    }
+
     return (
         <>
             <Hedder setScreen={setScreen} screen={screen}/>
@@ -48,21 +58,34 @@ export default function Login({setScreen, screen, setUser}){
                         const warDiff = document.getElementsByClassName("warning")[1];
                         const userName = document.getElementById("user-id").value;
                         const pass = document.getElementById("pass").value;
+                        const data = {
+                            login_number :userName,
+                            password : pass
+                        }
 
                         if(userName === "" || pass === ""){
                             warNoText.style.display = "block";
                             warDiff.style.display = "none";
                         } else {
-                            setScreen("List");
-                            // axios.post("***"+/login)
+                            // setScreen("List");
+                            // axios({
+                            //     method: "post",
+                            //     url:`${baseURL}login`,
+                            //     data: data,
+                            // })
                             //     .then(res => {
-                            //         if(res.userName){
+                            //         if(res){
                             //             setScreen("List");
+                            //             setUser(res[0]);
                             //         }else{
                             //             warNoText.style.display = "none";
                             //             warDiff.style.display = "block";
                             //         }
                             //     })
+                            //     .catch((res) => {
+                            //         console.error(res);
+                            //     })
+                            getUser(data)
                         }
                     }}
                 >
