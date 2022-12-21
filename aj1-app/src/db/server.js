@@ -47,6 +47,65 @@ app.post("/login", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
+app.get("/viewBudge", (req, res) => {
+  const user_id = req.body.user_id;
+  knex.select({
+    user_id: "user_id",
+    budge_id: "budge_id",
+    user_id_budge_id: "user_id_budge_id",
+    budge_name: "budge_name",
+    budge_type: "budge_type",
+  })
+  .from("user_budge")
+  .innerJoin("user", "user.id","=","user_id")
+  .innerJoin("department", "department.id","=","user.department_id")
+  .innerJoin("budge", "budge.id","=","budge_id")
+  .innerJoin("budge_type", "budge_type.id","=","budge.budge_type_id")
+  .where("user_id" ,"=", user_id)
+  .then((result) => {
+    const data = result;
+    res.status(200).send(data);  
+  })
+  .catch((err) => res.status(400).send(err));
+});
+
+app.post("/assignBudge", (req, res) => {
+
+  knex('user_budge')
+  .insert({
+    user_id: req.body.user_id,
+    budge_id: req.body.budge_id,
+    user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
+  })
+  .then((result) => res.sendstatus(201))
+  .catch((err) => res.status(400).send(err));
+});
+
+app.get("/assignBudge/user", (req, res) => {
+  knex.select({
+    id: "id",
+    user_name: "user_name",
+  })
+  .from("user")
+  .then((result) => {
+    res.status(200).json(result);
+  })
+  .catch((err) => res.status(400).send(err));
+});
+
+app.get("/assignBudge/budge", (req, res) => {
+  knex.select({
+    id: "id",
+    budge_name: "budge_name",
+  })
+  .from("budge")
+  .then((result) => {
+    res.status(200).json(result);
+  })
+  .catch((err) => res.status(400).send(err));
+});
+
+
 app.listen(PORT, () => {
   console.log(`Is your server running? Well, you better go catch it, then! http://localhost:${PORT}`);
 });
