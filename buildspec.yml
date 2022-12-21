@@ -1,19 +1,21 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      java: corretto11
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - if [ -s /home/ec2-user/.nvm/nvm.sh ]; then source /home/ec2-user/.nvm/nvm.sh; fi
+      - npm install
   build:
     commands:
-      - echo Build started on `date`
-      - mvn install
+      - cd /home/ec2-user/test-asai/aj1-app
+      - npm run build
   post_build:
     commands:
-      - echo Build completed on `date`
+      - tar cf /tmp/node_modules.tar node_modules
 artifacts:
   files:
-    - target/messageUtil-1.0.jar
+    - "**/*"
+  base-directory: build
+cache:
+  paths:
+    - /tmp/node_modules.tar

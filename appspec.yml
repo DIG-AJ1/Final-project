@@ -1,8 +1,9 @@
 version: 0.0
 os: linux
 files:
-  - source: aj1-app
-    destination: /var/www/html/
+  - source: /
+    # destination: /var/www/html/
+    destination: /home/ec2-user/test-asai/
 hooks:
   BeforeInstall:
     - location: aj1-app/scripts/install_dependencies
