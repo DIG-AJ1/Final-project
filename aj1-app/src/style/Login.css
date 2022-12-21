@@ -27,3 +27,7 @@
     -webkit-text-security:disc;
 }
 
+.warning{
+    display: none;
+    color: red;
+}

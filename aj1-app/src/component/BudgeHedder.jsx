@@ -18,7 +18,6 @@ export default function Hedder({setScreen,screen,admin}) {
             <button
               className="hedder-btn"
               onClick={() => {
-                console.log("***");
                 setScreen("List");
               }}
             >
