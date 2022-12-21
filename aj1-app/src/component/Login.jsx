@@ -5,19 +5,24 @@ import "../style/button.css"
 import Hedder from "./Hedder"
 import axios from "axios";
 
+// axios.defaults.headers.post[]
 
 
 export default function Login({setScreen, screen, setUser}){
 
     const baseURL = "http://localhost:8080/"
 
-    function getUser(data){
-        const result = fetch(`/login`,{
-            method: "POST",
-            body: JSON.stringify(data)
-        })
-        return result;
-    }
+    // function getUser(data){
+    //     const result = fetch(`/login`,{
+    //         method: "POST",
+    //         mode: "no-cors",
+    //         headers:{
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //     return result;
+    // }
 
     return (
         <>
@@ -62,24 +67,24 @@ export default function Login({setScreen, screen, setUser}){
                             warDiff.style.display = "none";
                         } else {
                             // setScreen("List");
-                            // axios({
-                            //     method: "post",
-                            //     url:`${baseURL}login`,
-                            //     data: data,
-                            // })
-                            //     .then(res => {
-                            //         if(res){
-                            //             setScreen("List");
-                            //             setUser(res[0]);
-                            //         }else{
-                            //             warNoText.style.display = "none";
-                            //             warDiff.style.display = "block";
-                            //         }
-                            //     })
-                            //     .catch((res) => {
-                            //         console.error(res);
-                            //     })
-                            getUser(data)
+                            axios({
+                                method: "post",
+                                url:`${baseURL}login`,
+                                data: data,
+                            })
+                                .then(res => {
+                                    if(res){
+                                        setScreen("List");
+                                        setUser(res[0]);
+                                    }else{
+                                        warNoText.style.display = "none";
+                                        warDiff.style.display = "block";
+                                    }
+                                })
+                                .catch((res) => {
+                                    console.error(res);
+                                })
+                            // getUser(data)
                         }
                     }}
                 >

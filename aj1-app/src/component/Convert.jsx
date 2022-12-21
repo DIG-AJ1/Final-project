@@ -8,7 +8,7 @@ import GivingBadge from "./GivingBudge";
 
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
-    const [userser,setUser] = useState("");
+    const [user,setUser] = useState("");
     const admin = 1;
     const state = ["aaa","bbb","ccc"];
     
