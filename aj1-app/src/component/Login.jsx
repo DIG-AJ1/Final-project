@@ -5,24 +5,10 @@ import "../style/button.css"
 import Hedder from "./Hedder"
 import axios from "axios";
 
-// axios.defaults.headers.post[]
-
 
 export default function Login({setScreen, screen, setUser}){
 
     const baseURL = "http://localhost:8080/"
-
-    // function getUser(data){
-    //     const result = fetch(`/login`,{
-    //         method: "POST",
-    //         mode: "no-cors",
-    //         headers:{
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     return result;
-    // }
 
     return (
         <>
@@ -58,7 +44,7 @@ export default function Login({setScreen, screen, setUser}){
                         const userName = document.getElementById("user-id").value;
                         const pass = document.getElementById("pass").value;
                         const data = {
-                            login_number :userName,
+                            login_number : userName,
                             password : pass
                         }
 
@@ -73,16 +59,18 @@ export default function Login({setScreen, screen, setUser}){
                                 data: data,
                             })
                                 .then(res => {
-                                    if(res){
+                                    if(res.data){
                                         setScreen("List");
-                                        setUser(res[0]);
+                                        setUser(res.data[0]);
+                                        
                                     }else{
                                         warNoText.style.display = "none";
                                         warDiff.style.display = "block";
                                     }
                                 })
                                 .catch((res) => {
-                                    console.error(res);
+                                    warNoText.style.display = "none";
+                                    warDiff.style.display = "block";
                                 })
                             // getUser(data)
                         }

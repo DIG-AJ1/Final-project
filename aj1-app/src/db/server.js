@@ -9,11 +9,11 @@ const app = express();
 
 app.use(express.json());
 app.use("/", express.static(__dirname + "../../public"));
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.get("/", (req, res) => {
     let message = "Hello world! From Server express.js!!!"
@@ -47,8 +47,9 @@ app.post("/login", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
-app.get("/viewBudge", (req, res) => {
+app.post("/viewBudge", (req, res) => {
   const user_id = req.body.user_id;
+  console.log(req.body);
   knex.select({
     user_id: "user_id",
     budge_id: "budge_id",

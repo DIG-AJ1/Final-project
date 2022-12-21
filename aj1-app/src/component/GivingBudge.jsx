@@ -1,16 +1,41 @@
-import React ,{useState} from "react";
+import React ,{useState, useEffect} from "react";
 import Hedder from "./Hedder";
 import BudgeHedder from "./BudgeHedder"
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import "../style/Dropdown.css"
+import axios from "axios";
 
 export default function GivingBudge({setScreen, screen, admin}){
-    const bagdes = ["dig-1","dig-2","dig-3"];
-    const people = ["asai","asano","yamakuzu","hiraoka","miura"];
+    // const bagdeList = ["dig-1","dig-2","dig-3"];
+    // const people = ["asai","asano","yamakuzu","hiraoka","miura"];
 
     const [offerBadge,setBadge] = useState("");
     const [offerPerson,setPerson] = useState("");
+    const [bugdeList,setBadges] = useState([]);
+    const [people,setPeople] = useState([]);
+    const [allBudge,setAllbudge] = useState([]);
+    const [allPeople,setAllpeople] = useState([]);
+
+    const baseURL = "http://localhost:8080/";
+
+    useEffect(() => {
+        axios.get(`${baseURL}assignBudge/budge`)
+            .then(res => {
+                setAllbudge(res.data);
+                setBadges(res.data.map((elem) => elem.budge_name))
+            })
+
+            axios.get(`${baseURL}assignBudge/user`)
+            .then(res => {
+                setAllpeople(res.data)
+                setPeople(res.data.map((elem) => elem.user_name))
+            })
+
+    },[])
+
+    console.log(allBudge);
+    console.log(allPeople);
 
     return(
         <>
@@ -26,7 +51,7 @@ export default function GivingBudge({setScreen, screen, admin}){
                     >
                         <option value="" selected disabled>Select Badge</option>
                         {
-                            bagdes.map((badge) => <option value={badge}>{badge}</option>)
+                            bugdeList.map((badge) => <option value={badge}>{badge}</option>)
                         }
                     </select>
                 </label>
@@ -50,6 +75,15 @@ export default function GivingBudge({setScreen, screen, admin}){
                     variant="primary"
                     onClick={() => {
                         console.log(offerBadge, offerPerson);
+
+                        // axios({
+                        //     method : "post",
+                        //     url : `${baseURL}assignBudge`,
+                        //     data : {
+                        //         user_id : "***",
+                        //         budge_id : "***"
+                        //     }
+                        // })
                     }}
                 >
                     offer
