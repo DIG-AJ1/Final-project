@@ -9,12 +9,6 @@ import axios from "axios";
 
 export default function Login({setScreen, screen, setUser}){
 
-    const data = {
-        username: "***",
-        password: "***",
-        token: "***"
-    }
-
     const baseURL = "http://localhost:8080/"
 
     function getUser(data){
@@ -22,7 +16,7 @@ export default function Login({setScreen, screen, setUser}){
             method: "POST",
             body: JSON.stringify(data)
         })
-        return result.json();
+        return result;
     }
 
     return (
