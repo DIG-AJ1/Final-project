@@ -41,7 +41,7 @@ app.post("/login", (req, res) => {
       const data = [result.id, result.userName]
       res.status(200).json(data);
     } else {
-      res.status(200).send("パスワードが間違っています");
+      res.status(200).send(undefined);
     }
   })
   .catch((err) => res.status(400).send(err));
