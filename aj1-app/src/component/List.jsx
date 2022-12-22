@@ -33,6 +33,7 @@ export default function List({ setScreen, screen, user, list }) {
     <>
       <Hedder setScreen={setScreen} screen={screen} admin={1} />
       <div>
+        バッジ一覧
         {budge.map((sell) => {
           return <div className="cell">{sell}</div>;
         })}

@@ -34,9 +34,6 @@ export default function GivingBudge({setScreen, screen, admin}){
 
     },[])
 
-    console.log(allBudge);
-    console.log(allPeople);
-
     return(
         <>
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
@@ -75,15 +72,27 @@ export default function GivingBudge({setScreen, screen, admin}){
                     variant="primary"
                     onClick={() => {
                         console.log(offerBadge, offerPerson);
-
-                        // axios({
-                        //     method : "post",
-                        //     url : `${baseURL}assignBudge`,
-                        //     data : {
-                        //         user_id : "***",
-                        //         budge_id : "***"
-                        //     }
-                        // })
+                        let a = 0;
+                        let b = 0;
+                        for(const elem of allBudge){
+                            if(elem.budge_name === offerBadge){
+                                a = elem.id;
+                            }
+                        }
+                        for(const elem of allPeople){
+                            if(elem.user_name === offerPerson){
+                                b = elem.id; 
+                            }
+                        }
+                        // console.log(a,b);
+                        axios({
+                            method : "post",
+                            url : `${baseURL}assignBudge`,
+                            data : {
+                                user_id : 1,
+                                budge_id : 1
+                            }
+                        })
                     }}
                 >
                     offer

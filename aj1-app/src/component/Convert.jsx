@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Login from "./Login";
-import Main from "./Main";
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import List from "./List";
 import GivingBadge from "./GivingBudge";
