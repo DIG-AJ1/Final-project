@@ -10,7 +10,6 @@ exports.up = function(knex) {
         table.integer("status").notNullable();
         table.string("certification_date");
         table.string("url");
-        table.string("certification_date");
     });
 };
 

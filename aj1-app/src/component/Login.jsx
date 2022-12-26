@@ -60,10 +60,12 @@ export default function Login({setScreen, screen, setUser}){
                             })
                                 .then(res => {
                                     if(res.data){
+                                        console.log("no63");
                                         setScreen("List");
                                         setUser(res.data[0]);
                                         
                                     }else{
+                                        console.log("no.67");
                                         warNoText.style.display = "none";
                                         warDiff.style.display = "block";
                                     }
