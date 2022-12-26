@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## files
+index.js…
+　knexとknexfile、環境変数を参照し、
+　server.jsで利用できるknexをエクスポート
+
+knexfile.js...
+ DBの設定（develop時/production時それぞれ）
+ *connection設定、これで十分？？
+
+server.js...
+ dotenv, express, indexをインポート
+
 ## Available Scripts
 
 In the project directory, you can run:

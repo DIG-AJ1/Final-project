@@ -23,6 +23,8 @@ app.get("/", (req, res) => {
 app.post("/login", (req, res) => {
   let login_number = req.body.login_number;
   let password = req.body.password;
+  console.log("login_number:", login_number);
+  console.log("password:", password);
   
   knex.select({
     id: "id",

@@ -8,6 +8,7 @@ exports.up = function(knex) {
         table.integer("login_number").unique();
         table.string("user_name").notNullable();
         table.string("password").notNullable();
+        table.integer("role").notNullable();        
         table.string("token").unique();
         table.integer("department_id").references("id").inTable("department");
     });
