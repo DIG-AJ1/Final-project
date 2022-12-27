@@ -60,7 +60,6 @@ export default function Login({setScreen, screen, setUser}){
                             })
                                 .then(res => {
                                     if(res.data){
-                                        console.log("no63: ", res.data);
                                         if (res.data[2]==="requestBudge"){
                                             setScreen("List");
                                         } else{
@@ -69,7 +68,6 @@ export default function Login({setScreen, screen, setUser}){
                                         setUser(res.data[0]);
                                         
                                     }else{
-                                        console.log("no.67");
                                         warNoText.style.display = "none";
                                         warDiff.style.display = "block";
                                     }

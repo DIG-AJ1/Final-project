@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function ApproveBudge() {
 
-    const baseURL = "http://localhost:8080/";
+    // const baseURL = "http://localhost:8080/";
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
 
@@ -12,39 +12,34 @@ export default function ApproveBudge() {
     // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
     useEffect(() => {
         // statusが1(申請中)のレコードを全て取得する
-        // statusが1の時のレコードの取得方法はどうやって書くの？
-        // ここまではきている
-        console.log("no17");
         axios.get("http://localhost:8080/approveBudge", {
-            // req.queryで取り出せます
             params:{status: 1}
         })
-        // axios({
-        //     method: "get",
-        //     url: `${baseURL}approveBudge`,
-        //     data: {
-        //         status: 1,
-        //     },
-        // })
-        // どんな状態でデータが返ってくるの？
-        // こんなデータが返ってくると嬉しい [{ "user":"jiro", "budge_name":"ITパスポート"}, {･･･}, {･･･}]
-        // .then(res => res)
-        // .then((res) => JSON.parse(res))
         .then((res) => setApplyList(res.data))
         .catch((err) => console.error(err));
-        // }
-    // }, [applyList]);
     },[]);
-    console.log("applyList, typeof",applyList,", ",typeof(applyList));
 
     return (
         <>
             <div>
-                名前 | ITパスポート
-                <Button>承認</Button>
-                <Button>棄却</Button>
                 {applyList.map((record,key)=>{
-                    return <div className="application" key={key}>user名: {record.user_name}, 資格名: {record.budge_name}, url: {record.url}</div>;
+                    return(
+                    <>
+                        <div className="application" key={key}>
+                            user名: {record.user_name}, 資格名: {record.budge_name}, url: {record.url}
+                            <Button variant='success' onClick={
+                                ()=>{axios.post("http://localhost:8080/approveBudge", 
+                                    {user_id_budge_id:record.user_id_budge_id,  status: 2})
+                                    }}>承認
+                            </Button>
+                            <Button variant='danger' onClick={
+                                ()=>{axios.post("http://localhost:8080/approveBudge", 
+                                {user_id_budge_id:record.user_id_budge_id,  status: 3})
+                                }
+                            }>棄却</Button>
+                        </div>
+                    </>
+                    )
                 })}
             </div>
         </>

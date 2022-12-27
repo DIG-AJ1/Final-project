@@ -114,10 +114,7 @@ app.post("/requestBudge", (req, res) => {
 });
 
 app.get("/approveBudge", (req, res) => {
-  console.log("req.query: ",req.query);
   const status = Number(req.query.status);
-  console.log("status, typeof: ",status,", ",typeof(status));
-  console.log(req.body);
   knex.select({
     user_id: "user_id",
     user_name: "user_name",
@@ -141,6 +138,25 @@ app.get("/approveBudge", (req, res) => {
   })
   .catch((err) => res.status(400).send(err));
 });
+
+app.post("/approveBudge", async (req, res) => {
+  console.log("req: ",req.body);
+  let user_id_budge_id = req.body.user_id_budge_id;
+  let status= req.body.status;
+  
+  console.log("user_id_budge_id: ", user_id_budge_id);
+  console.log("status: ", status);
+
+
+  await knex("user_budge")
+    .where("user_budge_id" ,"=", user_id_budge_id)
+    .update({status:status})    
+    .then((res) => {
+      // const data = result;
+      res.status(200).send()})
+    .catch((err) => res.status(400).send(err));
+});
+
 
 // // 
 // app.get("/approveBudge", (req, res) => {
