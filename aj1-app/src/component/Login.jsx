@@ -60,8 +60,12 @@ export default function Login({setScreen, screen, setUser}){
                             })
                                 .then(res => {
                                     if(res.data){
-                                        console.log("no63");
-                                        setScreen("List");
+                                        console.log("no63: ", res.data);
+                                        if (res.data[2]==="requestBudge"){
+                                            setScreen("List");
+                                        } else{
+                                            setScreen("approveBudge")
+                                        }
                                         setUser(res.data[0]);
                                         
                                     }else{

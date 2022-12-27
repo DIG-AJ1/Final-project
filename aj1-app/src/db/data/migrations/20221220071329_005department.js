@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.integer("user_id_budge_id").notNullable().unique();
         table.integer("user_id").references("id").inTable("user");
         table.integer("budge_id").references("id").inTable("budge");
+        //変更点
         table.integer("status").notNullable();
         table.string("certification_date");
         table.string("url");

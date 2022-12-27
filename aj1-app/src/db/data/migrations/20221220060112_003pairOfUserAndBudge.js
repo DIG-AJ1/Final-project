@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.increments("id").primary();
         table.integer("login_number").unique();
         table.string("user_name").notNullable();
+        //変更点
         table.string("password").notNullable();
         table.integer("role").notNullable();        
         table.string("token").unique();
