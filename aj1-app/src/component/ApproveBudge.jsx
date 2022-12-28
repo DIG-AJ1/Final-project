@@ -7,6 +7,7 @@ export default function ApproveBudge() {
     // const baseURL = "http://localhost:8080/";
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
+    const [ appStatus, setStatus] = useState(0)
 
     // [applyList]の値が変更された時に実行する
     // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
@@ -17,7 +18,7 @@ export default function ApproveBudge() {
         })
         .then((res) => setApplyList(res.data))
         .catch((err) => console.error(err));
-    },[]);
+    },[appStatus]);
 
     return (
         <>
@@ -28,7 +29,7 @@ export default function ApproveBudge() {
                         <div className="application" key={key}>
                             user名: {record.user_name}, 資格名: {record.budge_name}, url: {record.url}
                             <Button variant='success' onClick={
-                                ()=>{axios.post("http://localhost:8080/approveBudge", 
+                                ()=>{axios.patch("http://localhost:8080/approveBudge", 
                                     {user_id_budge_id:record.user_id_budge_id,  status: 2})
                                     }}>承認
                             </Button>

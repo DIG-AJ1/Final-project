@@ -139,7 +139,7 @@ app.get("/approveBudge", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
-app.post("/approveBudge", async (req, res) => {
+app.patch("/approveBudge", async (req, res) => {
   console.log("req: ",req.body);
   let user_id_budge_id = req.body.user_id_budge_id;
   let status= req.body.status;
@@ -149,7 +149,7 @@ app.post("/approveBudge", async (req, res) => {
 
 
   await knex("user_budge")
-    .where("user_budge_id" ,"=", user_id_budge_id)
+    .where("user_id_budge_id" ,"=", user_id_budge_id)
     .update({status:status})    
     .then((res) => {
       // const data = result;

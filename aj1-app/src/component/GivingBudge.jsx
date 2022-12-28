@@ -100,7 +100,7 @@ export default function GivingBudge({setScreen, screen, admin}){
                     >
                         <option value="" selected disabled>Select Badge</option>
                         {
-                            testBudge.map((badge) => <option value={badge}>{badge}</option>)
+                            bugdeList.map((badge) => <option value={badge}>{badge}</option>)
                         }
                     </select>
                 </label>
@@ -111,14 +111,20 @@ export default function GivingBudge({setScreen, screen, admin}){
                     onClick={() => {
                         console.log(offerBadge, offerPerson);
 
-                        // axios({
-                        //     method : "post",
-                        //     url : `${baseURL}assignBudge`,
-                        //     data : {
-                        //         user_id : "***",
-                        //         budge_id : "***"
-                        //     }
-                        // })
+                        const url = axios.post(baseURL + "/requestBudge",
+                        {
+                            user_id : 1,
+                            user_name : "nami",
+                            budge_id : 4,
+                            status : 1,
+                            url : "sss",
+                            certification_date: "certification_date",
+                            user_id_budge_id: "40",
+                            budge_name: "nami-budge",
+                            budge_type: "budge_type",
+                        })
+                        .then(() => console.log(url))
+                        .catch(err => console.log("err:", err));
                     }}
                 >
                     request
