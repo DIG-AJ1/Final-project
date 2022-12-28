@@ -21,7 +21,7 @@ export default function Convert() {
                 <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
                 (screen === "List")?
                     <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
-                        (user[2] === "requestBudge")?
+                    (user[2] === "requestBudge")?
                     <GivingBadge setScreen={setScreen} screen={screen}/>:
                     <ApproveBudge setScreen={setScreen} screen={screen}/>
         }
