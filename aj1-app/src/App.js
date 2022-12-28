@@ -18,6 +18,8 @@ function App() {
     axios.get('/')
       .then(res => {
         setPost(res.data)
+        console.log("inner axios/get");
+        console.log(res.data);
       })
   },[])
 
