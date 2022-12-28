@@ -65,7 +65,8 @@ export default function Login({setScreen, screen, setUser}){
                                         } else{
                                             setScreen("approveBudge")
                                         }
-                                        setUser(res.data[0]);
+                                        setUser(res.data);
+                                        console.log(res.data);
                                         
                                     }else{
                                         warNoText.style.display = "none";
