@@ -29,16 +29,29 @@ app.post("/login", (req, res) => {
     loginNumber: "login_number",
     password: "password",
     userName: "user_name",
+    role: "role"
   })
   .from("user")
   .where("login_number" ,"=", login_number)
   .first()
   .then((result) => {
-    console.log(result);
-    console.log(result.password);
+    // console.log(result);
+    // console.log("pwRec: ", result.password);
+    // console.log("pwInput: ", password);
+    
     // { id: 1, loginNumber: 101, password: 'pw1', userName: 'taro' }
     if (password === result.password) {
-      const data = [result.id, result.userName]
+      // console.log("PWmatched");
+      // console.log("role: ",result.role);
+      let data;
+      if (result.role===0) {
+        // data = [result.id, result.userName]
+        data = [result.id, result.userName,"requestBudge"]
+       } else{
+        data = [result.id, result.userName,"approveBudge"]
+        // data = [result.id, result.userName]
+       }
+      // console.log("data: ",data);
       res.status(200).json(data);
     } else {
       res.status(200).send(undefined);
@@ -48,11 +61,15 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/viewBudge", (req, res) => {
+  console.log("no68");
   const user_id = req.body.user_id;
   console.log(req.body);
   knex.select({
     user_id: "user_id",
     budge_id: "budge_id",
+    status: "status",
+    url: "url",
+    certification_date: "certification_date",
     user_id_budge_id: "user_id_budge_id",
     budge_name: "budge_name",
     budge_type: "budge_type",
@@ -70,17 +87,104 @@ app.post("/viewBudge", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
-app.post("/assignBudge", (req, res) => {
+// app.post("/assignBudge", (req, res) => {
+
+//   knex('user_budge')
+//   .insert({
+//     user_id: req.body.user_id,
+//     budge_id: req.body.budge_id,
+//     user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
+//   })
+//   .then((result) => res.sendstatus(201))
+//   .catch((err) => res.status(400).send(err));
+// });
+
+app.post("/requestBudge", (req, res) => {
 
   knex('user_budge')
   .insert({
     user_id: req.body.user_id,
     budge_id: req.body.budge_id,
+    url:req.body.url,
+    status: 1,
     user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
   })
   .then((result) => res.sendstatus(201))
   .catch((err) => res.status(400).send(err));
 });
+
+app.get("/approveBudge", (req, res) => {
+  const status = Number(req.query.status);
+  knex.select({
+    user_id: "user_id",
+    user_name: "user_name",
+    budge_id: "budge_id",
+    status: "status",
+    url: "url",
+    certification_date: "certification_date",
+    user_id_budge_id: "user_id_budge_id",
+    budge_name: "budge_name",
+    budge_type: "budge_type",
+  })
+  .from("user_budge")
+  .innerJoin("user", "user.id","=","user_id")
+  .innerJoin("department", "department.id","=","user.department_id")
+  .innerJoin("budge", "budge.id","=","budge_id")
+  .innerJoin("budge_type", "budge_type.id","=","budge.budge_type_id")
+  .where("status" ,"=", status)
+  .then((result) => {
+    const data = result;
+    res.status(200).send(data);  
+  })
+  .catch((err) => res.status(400).send(err));
+});
+
+app.post("/approveBudge", async (req, res) => {
+  console.log("req: ",req.body);
+  let user_id_budge_id = req.body.user_id_budge_id;
+  let status= req.body.status;
+  
+  console.log("user_id_budge_id: ", user_id_budge_id);
+  console.log("status: ", status);
+
+
+  await knex("user_budge")
+    .where("user_budge_id" ,"=", user_id_budge_id)
+    .update({status:status})    
+    .then((res) => {
+      // const data = result;
+      res.status(200).send()})
+    .catch((err) => res.status(400).send(err));
+});
+
+
+// // 
+// app.get("/approveBudge", (req, res) => {
+//   const user_id = req.body.user_id;
+//   console.log(req.body);
+//   knex.select({
+//     user_id: "user_id",
+//     budge_id: "budge_id",
+//     status: "status",
+//     url: "url",
+//     certification_date: "certification_date",
+//     user_id_budge_id: "user_id_budge_id",
+//     budge_name: "budge_name",
+//     budge_type: "budge_type",
+//   })
+//   .from("user_budge")
+//   .innerJoin("user", "user.id","=","user_id")
+//   .innerJoin("department", "department.id","=","user.department_id")
+//   .innerJoin("budge", "budge.id","=","budge_id")
+//   .innerJoin("budge_type", "budge_type.id","=","budge.budge_type_id")
+//   .where("status" ,"=", 2)
+//   .then((result) => {
+//     const data = result;
+//     res.status(200).send(data);  
+//   })
+//   .catch((err) => res.status(400).send(err));
+// });
+
 
 app.get("/assignBudge/user", (req, res) => {
   knex.select({
