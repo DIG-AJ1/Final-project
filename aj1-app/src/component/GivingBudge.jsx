@@ -16,6 +16,7 @@ export default function GivingBudge({setScreen, screen, admin}){
     const [people,setPeople] = useState([]);
     const [allBudge,setAllbudge] = useState([]);
     const [allPeople,setAllpeople] = useState([]);
+    const [text, setText] = useState("");
 
     const baseURL = "http://localhost:8080/";
 
@@ -37,12 +38,14 @@ export default function GivingBudge({setScreen, screen, admin}){
     console.log(allBudge);
     console.log(allPeople);
 
+    const testBudge = ["JavaScript", "React", "Express", "swift", "AWS"]
+
     return(
         <>
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
             <BudgeHedder setScreen={setScreen} screen={screen} admin={admin} />
             <div className="form">
-                <label className="drop-wrap">
+                {/* <label className="drop-wrap">
                     <select 
                         className="dropdown"
                         onChange={(event) => {
@@ -87,6 +90,38 @@ export default function GivingBudge({setScreen, screen, admin}){
                     }}
                 >
                     offer
+                </button> */}
+                <label className="drop-wrap">
+                    <select 
+                        className="dropdown"
+                        onChange={(event) => {
+                            setBadge(event.target.value);
+                        }}  
+                    >
+                        <option value="" selected disabled>Select Badge</option>
+                        {
+                            testBudge.map((badge) => <option value={badge}>{badge}</option>)
+                        }
+                    </select>
+                </label>
+                <input value={text} onChange={(event) => setText(event.target.value)}/>
+                <button
+                    className="log-btn"
+                    variant="primary"
+                    onClick={() => {
+                        console.log(offerBadge, offerPerson);
+
+                        // axios({
+                        //     method : "post",
+                        //     url : `${baseURL}assignBudge`,
+                        //     data : {
+                        //         user_id : "***",
+                        //         budge_id : "***"
+                        //     }
+                        // })
+                    }}
+                >
+                    request
                 </button>
             </div>
         </>
