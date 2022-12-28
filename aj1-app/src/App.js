@@ -4,14 +4,18 @@ import axios from "axios"
 import {useEffect, useState} from "react"
 
 // const baseURL = "http://localhost:8080/"
-const baseURL = "http://13.231.224.242:8080/"
+// const baseURL = "http://13.231.224.242:8080/"
 
 function App() {
 
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    axios.get(baseURL)
+    // axios.get(baseURL)
+    //   .then(res => {
+    //     setPost(res.data)
+    //   })
+    axios.get('/')
       .then(res => {
         setPost(res.data)
       })
