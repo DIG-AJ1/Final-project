@@ -15,7 +15,7 @@ export default function List({ setScreen, screen, user, list }) {
             method: "post",
             url: `${baseURL}viewBudge`,
             data: {
-                user_id: user,
+                user_id: user[0],
             },
         })
         .then((res) => {

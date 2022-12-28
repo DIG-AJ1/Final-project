@@ -3,8 +3,9 @@ import Login from "./Login";
 import Main from "./Main";
 import {BrowserRouter,Route,Switch} from "react-router-dom"
 import List from "./List";
-// import GivingBadge from "./GivingBudge";
+import GivingBadge from "./GivingBudge";
 import ApproveBudge from "./ApproveBudge";
+import axios from "axios";
 
 
 export default function Convert() {
@@ -20,7 +21,8 @@ export default function Convert() {
                 <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
                 (screen === "List")?
                     <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
-                    // <GivingBadge setScreen={setScreen} screen={screen}/>
+                        (user[2] === "requestBudge")?
+                    <GivingBadge setScreen={setScreen} screen={screen}/>:
                     <ApproveBudge setScreen={setScreen} screen={screen}/>
         }
         </div>

@@ -1,10 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import Table from 'react-bootstrap/Table';
+import BudgeHedder from "./BudgeHedder"
 
-export default function ApproveBudge() {
-
-    // const baseURL = "http://localhost:8080/";
+export default function ApproveBudge({setScreen, screen, admin}) {
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
 
@@ -12,38 +12,88 @@ export default function ApproveBudge() {
     // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
     useEffect(() => {
         // statusが1(申請中)のレコードを全て取得する
-        axios.get("http://localhost:8080/approveBudge", {
+        axios.get("/approveBudge", {
             params:{status: 1}
         })
         .then((res) => setApplyList(res.data))
         .catch((err) => console.error(err));
-    },[]);
+    },[applyList]);
 
     return (
         <>
-            <div>
+            <BudgeHedder setScreen={setScreen} screen={screen} admin={admin} />
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>依頼者名</th>
+                        <th>資格名</th>
+                        <th>URL</th>
+                        <th>承認</th>
+                        <th>棄却</th>
+                    </tr>
+                </thead>
                 {applyList.map((record,key)=>{
                     return(
                     <>
-                        <div className="application" key={key}>
-                            user名: {record.user_name}, 資格名: {record.budge_name}, url: {record.url}
-                            <Button variant='success' onClick={
-                                ()=>{axios.post("http://localhost:8080/approveBudge", 
-                                    {user_id_budge_id:record.user_id_budge_id,  status: 2})
-                                    }}>承認
-                            </Button>
-                            <Button variant='danger' onClick={
-                                ()=>{axios.post("http://localhost:8080/approveBudge", 
+                        <tbody className="application" key={key}>
+                            <tr>
+                                <th>{record.user_name}</th>
+                                <th>{record.budge_name}</th>
+                                <th>{record.url}</th>
+                                <th>
+                                    <Button
+                                        variant='success'
+                                        onClick={
+                                            // 
+                                            ()=>{axios.patch("/approveBudge", 
+                                            {user_id_budge_id:record.user_id_budge_id,  status: 2})
+                                            setApplyList(applyList)}
+                                        }
+                                        >
+                                        承認
+                                    </Button>
+                                </th>
+                                <th>
+                                <Button variant='danger' onClick={
+                                ()=>{axios.post("/approveBudge", 
                                 {user_id_budge_id:record.user_id_budge_id,  status: 3})
                                 }
                             }>棄却</Button>
-                        </div>
+                                </th>
+                            </tr>
+                        </tbody>
                     </>
                     )
                 })}
-            </div>
+            </Table>
         </>
     );
+
+    // return (
+    //     <>
+    //         <div>
+    //             {applyList.map((record,key)=>{
+    //                 return(
+    //                 <>
+    //                     <div className="application" key={key}>
+    //                         user名: {record.user_name}, 資格名: {record.budge_name}, url: {record.url}
+    //                         <Button variant='success' onClick={
+    //                             ()=>{axios.post("http://localhost:8080/approveBudge", 
+    //                                 {user_id_budge_id:record.user_id_budge_id,  status: 2})
+    //                                 }}>承認
+    //                         </Button>
+                            // <Button variant='danger' onClick={
+                            //     ()=>{axios.post("http://localhost:8080/approveBudge", 
+                            //     {user_id_budge_id:record.user_id_budge_id,  status: 3})
+                            //     }
+                            // }>棄却</Button>
+    //                     </div>
+    //                 </>
+    //                 )
+    //             })}
+    //         </div>
+    //     </>
+    // );
 }
 
 
