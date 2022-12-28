@@ -3,7 +3,8 @@ import './App.css';
 import axios from "axios"
 import {useEffect, useState} from "react"
 
-const baseURL = "http://localhost:8080/"
+// const baseURL = "http://localhost:8080/"
+const baseURL = "http://13.231.224.242:8080/"
 
 function App() {
 
