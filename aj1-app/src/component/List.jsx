@@ -42,7 +42,7 @@ export default function List({ setScreen, screen, user, list }) {
           </tr>
         </thead>
         <tbody>
-          {budge.map((record) => {
+          {budge.map((record,key) => {
             if(record[1]===0){
               record[1]="未取得"
             }else if(record[1]===1){
@@ -51,7 +51,7 @@ export default function List({ setScreen, screen, user, list }) {
               record[1]="取得済"
             }
             return(
-            <tr>
+            <tr key={key}>
               <td>{record[1]}</td>
               <td>{record[0]}</td>
               <td>{record[2]}</td>
@@ -59,11 +59,6 @@ export default function List({ setScreen, screen, user, list }) {
           )})}
         </tbody>
       </Table>
-      {/* <div>
-        {budge.map((sell) => {
-          return <div className="cell">{sell[0]}, {sell[1]}, {sell[2]}</div>;
-        })}
-      </div> */}
     </>
   );
 }

@@ -22,7 +22,7 @@ export default function Convert() {
                 (screen === "List")?
                     <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
                     (user[2] === "requestBudge")?
-                    <GivingBadge setScreen={setScreen} screen={screen}/>:
+                    <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
                     <ApproveBudge setScreen={setScreen} screen={screen}/>
         }
         </div>

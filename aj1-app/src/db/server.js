@@ -111,7 +111,7 @@ app.post("/requestBudge", (req, res) => {
     status: 1,
     user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
   })
-  .then((result) => res.sendstatus(201))
+  .then((result) => res.status(201).json(result))
   .catch((err) => res.status(400).send(err));
 });
 

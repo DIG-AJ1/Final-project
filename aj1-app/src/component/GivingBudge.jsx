@@ -5,8 +5,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import "../style/Dropdown.css"
 import axios from "axios";
+import moment from 'moment';
 
-export default function GivingBudge({setScreen, screen, admin}){
+export default function GivingBudge({setScreen, screen, admin, user}){
     // const bagdeList = ["dig-1","dig-2","dig-3"];
     // const people = ["asai","asano","yamakuzu","hiraoka","miura"];
 
@@ -40,52 +41,6 @@ export default function GivingBudge({setScreen, screen, admin}){
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
             <BudgeHedder setScreen={setScreen} screen={screen} admin={admin} />
             <div className="form">
-                {/* <label className="drop-wrap">
-                    <select 
-                        className="dropdown"
-                        onChange={(event) => {
-                            setBadge(event.target.value);
-                        }}  
-                    >
-                        <option value="" selected disabled>Select Badge</option>
-                        {
-                            bugdeList.map((badge) => <option value={badge}>{badge}</option>)
-                        }
-                    </select>
-                </label>
-
-                <label className="drop-wrap">
-                    <select 
-                        className="dropdown"
-                        onChange={(event) => {
-                            setPerson(event.target.value);
-                        }}
-                    >
-                        <option value="" selected disabled>Choose a Person</option>
-                        {
-                            people.map((person) => <option value={person}>{person}</option>)
-                        }
-                    </select>
-                </label>
-
-                <button
-                    className="log-btn"
-                    variant="primary"
-                    onClick={() => {
-                        console.log(offerBadge, offerPerson);
-
-                        // axios({
-                        //     method : "post",
-                        //     url : `${baseURL}assignBudge`,
-                        //     data : {
-                        //         user_id : "***",
-                        //         budge_id : "***"
-                        //     }
-                        // })
-                    }}
-                >
-                    offer
-                </button> */}
                 <label className="drop-wrap">
                     <select 
                         className="dropdown"
@@ -101,24 +56,18 @@ export default function GivingBudge({setScreen, screen, admin}){
                             // setBadge(event.target.value);
                         }}  
                     >
-                        <option value="" selected disabled>Select Badge</option>
+                        <option value="" defaultValue="" disabled>Select Badge</option>
                         {
                             bugdeList.map((badge) => <option value={badge[1]}>{badge[1]}</option>)
                         }
                     </select>
                 </label>
-                <input value={text} onChange={(event) => setText(event.target.value)}/>
+                <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
                 <button
                     className="log-btn"
                     variant="primary"
                     onClick={() => {
-                        console.log("dropdown: ",document.getElementsByClassName("dropdown"));
-                        console.log("dropdown: ",document.getElementsByClassName("dropdown")[0]);
-                        
-                        const applicant=2;
-                        // const link = document.getElementsByClassName("warning")[0];
-
-                        console.log("115: ",offerBadge, offerPerson);
+                        const applicant=user[0];
 
                         const url = axios.post("/requestBudge",
                         {
@@ -126,17 +75,17 @@ export default function GivingBudge({setScreen, screen, admin}){
                             // user_name : "nami",
                             budge_id : offerBadge[0],
                             // status : 1,
-                            url : "sss",
-                            certification_date: "2022/12/29",
+                            url : document.getElementById("evidence").value,
+                            certification_date: moment().format('YYYY/MM/DD'),
                             // user_id_budge_id: "40",
                             // budge_name: "nami-budge",
                             // budge_type: "budge_type",
-                        })
-                        .then(() => console.log(url))
+                        })                        
+                        .then(() => setScreen("List"))                        
                         .catch(err => console.log("err:", err));
                     }}
                 >
-                    request
+                    REQUEST
                 </button>
             </div>
         </>
