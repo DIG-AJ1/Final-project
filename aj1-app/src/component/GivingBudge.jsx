@@ -58,7 +58,7 @@ export default function GivingBudge({setScreen, screen, admin, user}){
                     >
                         <option value="" defaultValue="" disabled>Select Badge</option>
                         {
-                            bugdeList.map((badge) => <option value={badge[1]}>{badge[1]}</option>)
+                            bugdeList.map((badge, key) => <option key={key} value={badge[1]}>{badge[1]}</option>)
                         }
                     </select>
                 </label>
