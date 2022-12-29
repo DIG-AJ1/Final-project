@@ -55,11 +55,15 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                     </Button>
                                 </th>
                                 <th>
-                                <Button variant='danger' onClick={
-                                ()=>{axios.post("/approveBudge", 
-                                {user_id_budge_id:record.user_id_budge_id,  status: 3})
-                                }
-                            }>棄却</Button>
+                                    <Button variant='danger' 
+                                        onClick={
+                                            ()=>{axios.patch("/approveBudge", 
+                                            {user_id_budge_id:record.user_id_budge_id,  status: 3})
+                                            setApplyList(applyList)}
+                                        }
+                                        >
+                                        棄却
+                                    </Button>
                                 </th>
                             </tr>
                         </tbody>
