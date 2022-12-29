@@ -100,12 +100,14 @@ app.post("/viewBudge", (req, res) => {
 // });
 
 app.post("/requestBudge", (req, res) => {
+  console.log(req.body);
 
   knex('user_budge')
   .insert({
     user_id: req.body.user_id,
     budge_id: req.body.budge_id,
     url:req.body.url,
+    certification_date:req.body.certification_date,
     status: 1,
     user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
   })

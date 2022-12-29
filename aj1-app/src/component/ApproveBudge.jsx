@@ -28,7 +28,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                     <tr>
                         <th>依頼者名</th>
                         <th>資格名</th>
-                        <th>URL</th>
+                        <th>エビデンスURL</th>
                         <th>承認</th>
                         <th>棄却</th>
                     </tr>

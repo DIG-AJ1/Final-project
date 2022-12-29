@@ -18,25 +18,20 @@ export default function GivingBudge({setScreen, screen, admin}){
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
 
-    const baseURL = "http://localhost:8080/";
-
     useEffect(() => {
-        axios.get(`${baseURL}assignBudge/budge`)
+        axios.get("/assignBudge/budge")
             .then(res => {
                 setAllbudge(res.data);
-                setBadges(res.data.map((elem) => elem.budge_name))
+                setBadges(res.data.map((elem) => [elem.id,elem.budge_name]))
             })
 
-            axios.get(`${baseURL}assignBudge/user`)
+            axios.get("/assignBudge/user")
             .then(res => {
                 setAllpeople(res.data)
                 setPeople(res.data.map((elem) => elem.user_name))
             })
 
     },[])
-
-    console.log(allBudge);
-    console.log(allPeople);
 
     const testBudge = ["JavaScript", "React", "Express", "swift", "AWS"]
 
@@ -95,12 +90,20 @@ export default function GivingBudge({setScreen, screen, admin}){
                     <select 
                         className="dropdown"
                         onChange={(event) => {
-                            setBadge(event.target.value);
+                            console.log("event: ",event);
+                            console.log("budgeList: ",bugdeList);
+                            for(let element of bugdeList){
+                                if(element[1]===event.target.value){
+                                    console.log(element[0],element[1]);
+                                    setBadge([element[0],element[1]])
+                                }
+                            }
+                            // setBadge(event.target.value);
                         }}  
                     >
                         <option value="" selected disabled>Select Badge</option>
                         {
-                            bugdeList.map((badge) => <option value={badge}>{badge}</option>)
+                            bugdeList.map((badge) => <option value={badge[1]}>{badge[1]}</option>)
                         }
                     </select>
                 </label>
@@ -109,19 +112,25 @@ export default function GivingBudge({setScreen, screen, admin}){
                     className="log-btn"
                     variant="primary"
                     onClick={() => {
-                        console.log(offerBadge, offerPerson);
+                        console.log("dropdown: ",document.getElementsByClassName("dropdown"));
+                        console.log("dropdown: ",document.getElementsByClassName("dropdown")[0]);
+                        
+                        const applicant=2;
+                        // const link = document.getElementsByClassName("warning")[0];
 
-                        const url = axios.post(baseURL + "/requestBudge",
+                        console.log("115: ",offerBadge, offerPerson);
+
+                        const url = axios.post("/requestBudge",
                         {
-                            user_id : 1,
-                            user_name : "nami",
-                            budge_id : 4,
-                            status : 1,
+                            user_id : applicant,
+                            // user_name : "nami",
+                            budge_id : offerBadge[0],
+                            // status : 1,
                             url : "sss",
-                            certification_date: "certification_date",
-                            user_id_budge_id: "40",
-                            budge_name: "nami-budge",
-                            budge_type: "budge_type",
+                            certification_date: "2022/12/29",
+                            // user_id_budge_id: "40",
+                            // budge_name: "nami-budge",
+                            // budge_type: "budge_type",
                         })
                         .then(() => console.log(url))
                         .catch(err => console.log("err:", err));
