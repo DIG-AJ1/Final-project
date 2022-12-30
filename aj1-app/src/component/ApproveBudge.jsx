@@ -7,7 +7,6 @@ import BudgeHedder from "./BudgeHedder"
 export default function ApproveBudge({setScreen, screen, admin}) {
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
-    const [ appStatus, setStatus] = useState(0)
 
     // [applyList]の値が変更された時に実行する
     // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
@@ -22,7 +21,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
 
     return (
         <>
-            <BudgeHedder setScreen={setScreen} screen={screen} admin={admin} />
+            <BudgeHedder setScreen={setScreen} screen={screen} admin={admin}/>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -33,7 +32,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                         <th>棄却</th>
                     </tr>
                 </thead>
-                {applyList.map((record,key)=>{
+                {applyList.map((record,key) => {
                     return(
                         <tbody className="application" key={key}>
                             <tr>
@@ -44,8 +43,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                     <Button
                                         variant='success'
                                         onClick={
-                                            // 
-                                            ()=>{axios.patch("/approveBudge", 
+                                            () => {axios.patch("/approveBudge", 
                                             {user_id_budge_id:record.user_id_budge_id,  status: 2})
                                             setApplyList(applyList)}
                                         }
@@ -56,7 +54,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                 <th>
                                     <Button variant='danger' 
                                         onClick={
-                                            ()=>{axios.patch("/approveBudge", 
+                                            () => {axios.patch("/approveBudge", 
                                             {user_id_budge_id:record.user_id_budge_id,  status: 3})
                                             setApplyList(applyList)}
                                         }

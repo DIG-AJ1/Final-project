@@ -5,11 +5,9 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 
 export default function List({ setScreen, screen, user, list }) {
-  const baseURL = "http://localhost:8080/";
 
   const [budge, setBudge] = useState([]);
 
-  let budges = ["a","b","c"];
   useEffect(() => {
     async function func() {
         await axios({
@@ -49,6 +47,8 @@ export default function List({ setScreen, screen, user, list }) {
               record[1]="申請中"
             }else if(record[1]===2){
               record[1]="取得済"
+            }else if(record[1]===3){
+              record[1]="棄却"
             }
             return(
             <tr key={key}>
