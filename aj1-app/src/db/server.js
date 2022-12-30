@@ -87,17 +87,6 @@ app.post("/viewBudge", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
-// app.post("/assignBudge", (req, res) => {
-
-//   knex('user_budge')
-//   .insert({
-//     user_id: req.body.user_id,
-//     budge_id: req.body.budge_id,
-//     user_id_budge_id: `${req.body.user_id}${req.body.budge_id}`,
-//   })
-//   .then((result) => res.sendstatus(201))
-//   .catch((err) => res.status(400).send(err));
-// });
 
 app.post("/requestBudge", (req, res) => {
   console.log(req.body);
@@ -141,24 +130,24 @@ app.get("/approveBudge", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
-app.patch("/approveBudge", async (req, res) => {
-  console.log("req: ",req.body);
-  let user_id_budge_id = req.body.user_id_budge_id;
-  let status= req.body.status;
+// app.patch("/approveBudge", async (req, res) => {
+//   console.log("req: ",req.body);
+//   let user_id_budge_id = req.body.user_id_budge_id;
+//   let status= req.body.status;
   
-  console.log("user_id_budge_id: ", user_id_budge_id);
-  console.log(typeof user_id_budge_id);
-  console.log("status: ", status);
+//   console.log("user_id_budge_id: ", user_id_budge_id);
+//   console.log(typeof user_id_budge_id);
+//   console.log("status: ", status);
 
 
-  await knex("user_budge")
-    .where("user_id_budge_id" ,"=", user_id_budge_id)
-    .update({status:status})    
-    .then((res) => {
-      // const data = result;
-      res.status(200).send()})
-    .catch((err) => res.status(400).send(err));
-});
+//   await knex("user_budge")
+//     .where("user_id_budge_id" ,"=", user_id_budge_id)
+//     .update({status:status})    
+//     .then((res) => {
+//       // const data = result;
+//       res.status(200).send()})
+//     .catch((err) => res.status(400).send(err));
+// });
 
 app.patch("/approveBudge", async (req, res) => {
   console.log("req: ",req.body);
@@ -166,16 +155,12 @@ app.patch("/approveBudge", async (req, res) => {
   let status= req.body.status;
   
   console.log("no166_user_id_budge_id: ", user_id_budge_id);
-  console.log(typeof user_id_budge_id);
-  console.log("status: ", status);
 
 
   await knex("user_budge")
     .where("user_id_budge_id" ,"=", user_id_budge_id)
     .update({status: status})    
-    .then((res) => {
-      // const data = result;
-      res.status(200).send()})
+    .then((result) => res.status(200).json(result))
     .catch((err) => res.status(400).send(err));
 });
 
