@@ -35,7 +35,6 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                 </thead>
                 {applyList.map((record,key)=>{
                     return(
-                    <>
                         <tbody className="application" key={key}>
                             <tr>
                                 <th>{record.user_name}</th>
@@ -67,7 +66,6 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                 </th>
                             </tr>
                         </tbody>
-                    </>
                     )
                 })}
             </Table>
