@@ -12,12 +12,28 @@ export default function ApproveBudge({setScreen, screen, admin}) {
     // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
     useEffect(() => {
         // statusが1(申請中)のレコードを全て取得する
-        axios.get("/approveBudge", {
-            params:{status: 1}
-        })
-        .then((res) => setApplyList(res.data))
-        .catch((err) => console.error(err));
-    },[applyList]);
+        const getApplyList = async () => {
+            try {
+                const response = await axios.get("/approveBudge", {
+                    params:{status: 1}
+                });
+                setApplyList(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getApplyList();
+    },[]);
+
+    // useEffect(() => {
+    //     // statusが1(申請中)のレコードを全て取得する
+    //     axios.get("/approveBudge", {
+    //         params:{status: 1}
+    //     })
+    //     .then((res) => setApplyList(res.data))
+    //     .catch((err) => console.error(err));
+    // },[applyList]);
 
     return (
         <>
@@ -43,9 +59,12 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                     <Button
                                         variant='success'
                                         onClick={
-                                            () => {axios.patch("/approveBudge", 
-                                            {user_id_budge_id:record.user_id_budge_id,  status: 2})
-                                            setApplyList(applyList)}
+                                            () => {
+                                                axios.patch("/approveBudge", 
+                                                {user_id_budge_id:record.user_id_budge_id,  status: 2});
+                                                applyList.splice(key,1);
+                                                setApplyList(applyList);
+                                            }
                                         }
                                         >
                                         承認
@@ -54,9 +73,12 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                 <th>
                                     <Button variant='danger' 
                                         onClick={
-                                            () => {axios.patch("/approveBudge", 
-                                            {user_id_budge_id:record.user_id_budge_id,  status: 3})
-                                            setApplyList(applyList)}
+                                            () => {
+                                                axios.patch("/approveBudge", 
+                                                {user_id_budge_id:record.user_id_budge_id,  status: 3});
+                                                applyList.splice(key,1);
+                                                setApplyList(applyList);
+                                            }
                                         }
                                         >
                                         棄却
