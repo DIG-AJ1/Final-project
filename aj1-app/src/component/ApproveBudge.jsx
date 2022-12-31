@@ -8,32 +8,19 @@ export default function ApproveBudge({setScreen, screen, admin}) {
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
 
-    // [applyList]の値が変更された時に実行する
-    // user_budgeテーブルのstatusが1(申請中)のレコードを取得して、applyListの配列を更新する
     useEffect(() => {
-        // statusが1(申請中)のレコードを全て取得する
         const getApplyList = async () => {
             try {
                 const response = await axios.get("/approveBudge", {
                     params:{status: 1}
                 });
                 setApplyList(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error(error);
             }
         };
         getApplyList();
     },[]);
-
-    // useEffect(() => {
-    //     // statusが1(申請中)のレコードを全て取得する
-    //     axios.get("/approveBudge", {
-    //         params:{status: 1}
-    //     })
-    //     .then((res) => setApplyList(res.data))
-    //     .catch((err) => console.error(err));
-    // },[applyList]);
 
     return (
         <>
@@ -61,12 +48,11 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                         onClick={
                                             () => {
                                                 axios.patch("/approveBudge", 
-                                                {user_id_budge_id:record.user_id_budge_id,  status: 2});
+                                                    {user_id_budge_id:record.user_id_budge_id,  status: 2});
                                                 applyList.splice(key,1);
-                                                setApplyList(applyList);
+                                                setApplyList([...applyList]);
                                             }
-                                        }
-                                        >
+                                        }>
                                         承認
                                     </Button>
                                 </th>
@@ -75,12 +61,11 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                         onClick={
                                             () => {
                                                 axios.patch("/approveBudge", 
-                                                {user_id_budge_id:record.user_id_budge_id,  status: 3});
+                                                    {user_id_budge_id:record.user_id_budge_id,  status: 3});
                                                 applyList.splice(key,1);
-                                                setApplyList(applyList);
+                                                setApplyList([...applyList]);
                                             }
-                                        }
-                                        >
+                                        }>
                                         棄却
                                     </Button>
                                 </th>
