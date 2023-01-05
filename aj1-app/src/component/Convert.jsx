@@ -16,19 +16,19 @@ export default function Convert() {
 
     return (
         <>
-        <div>
-        {
-            (screen === "Login") ?
-                <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
-                (screen === "List")?
-                    <List setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>:
-                    <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>
-                    // (user[2] === "requestBudge")?
-                    // <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
-                    // <ApproveBudge setScreen={setScreen} screen={screen}/>
-        }
-        </div>
-    </>
+            <div>
+                {
+                    (screen === "Login") ?
+                        <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
+                        (screen === "List")?
+                            <List setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>:
+                            <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>
+                            // (user[2] === "requestBudge")?
+                            // <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
+                            // <ApproveBudge setScreen={setScreen} screen={screen}/>
+                }
+            </div>
+        </>
     );
     
     // return (

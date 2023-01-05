@@ -1,11 +1,15 @@
 import React,{useState} from "react";
+import BudgeHedder from "./BudgeHedder"
+import ListGroup from 'react-bootstrap/ListGroup';
+import ApproveBudge from "./ApproveBudge";
 
 export default function Main({setScreen, screen, setUser, user, list}) {
  
     console.log("mainJs5 user: ",user);
     return(
         <> 
-            <ul>
+            <BudgeHedder setScreen={setScreen} screen={screen}/>
+            {/* <ul>
                 <li
                 onClick={
                     ()=>{
@@ -23,7 +27,40 @@ export default function Main({setScreen, screen, setUser, user, list}) {
                     ""
             }
                 
-            </ul>
+            </ul> */}
+            <ListGroup variant="flush">
+                <ListGroup.Item
+                    onClick={
+                        ()=>{
+                            console.log("no11: clicked");
+                            setScreen("List");
+                            console.log(screen);
+                        }
+                    }>自分のスキルを見る
+                </ListGroup.Item>
+                <ListGroup.Item
+                    onClick={
+                        ()=>{
+                            console.log("no40: clicked");
+                            setScreen("Badge");
+                            console.log(screen);
+                        }
+                    }>取得したスキルを申請する
+                </ListGroup.Item>
+                <ListGroup.Item
+                    onClick={
+                        ()=>{
+                            console.log("no52: clicked");
+                            setScreen("ListOfMembers");
+                            console.log(screen);
+                        }
+                    }>メンバーのスキルを見る
+                </ListGroup.Item>
+                {
+                    (user[1] === 1) ?
+                        <ListGroup.Item>申請スキルの承認をする</ListGroup.Item> : ""
+                }
+            </ListGroup>
         </>
     )
 }

@@ -45,10 +45,12 @@ app.post("/login", (req, res) => {
       // console.log("role: ",result.role);
       let data;
       if (result.role===0) {
-        // data = [result.id, result.userName]
         data = [result.id, result.role, result.userName,"requestBudge"]
+        // data = {user_id: result.id, user_role: result.role, user_name: result.userName, str: "requestBudge"}
+        // data = [result.id, result.userName]
        } else{
         data = [result.id, result.role, result.userName,"approveBudge"]
+        // data = {user_id: result.id, user_role: result.role, user_name: result.userName, str: "approveBudge"}
         // data = [result.id, result.userName]
        }
       // console.log("data: ",data);
