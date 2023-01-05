@@ -10,21 +10,38 @@ import axios from "axios";
 
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
-    const [user,setUser] = useState("");
+    const [user,setUser] = useState([]);
+    // const [role,setRole] = useState(0);
     const [list, setList] = useState([]);
 
-    
     return (
+        <>
         <div>
         {
             (screen === "Login") ?
                 <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
                 (screen === "List")?
-                    <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
-                    (user[2] === "requestBudge")?
-                    <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
-                    <ApproveBudge setScreen={setScreen} screen={screen}/>
+                    <List setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>:
+                    <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/>
+                    // (user[2] === "requestBudge")?
+                    // <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
+                    // <ApproveBudge setScreen={setScreen} screen={screen}/>
         }
         </div>
+    </>
     );
+    
+    // return (
+    //     <div>
+    //     {
+    //         (screen === "Login") ?
+    //             <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
+    //             (screen === "List")?
+    //                 <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
+    //                 (user[2] === "requestBudge")?
+    //                 <GivingBadge setScreen={setScreen} screen={screen} user={user}/>:
+    //                 <ApproveBudge setScreen={setScreen} screen={screen}/>
+    //     }
+    //     </div>
+    // );
 }

@@ -46,9 +46,9 @@ app.post("/login", (req, res) => {
       let data;
       if (result.role===0) {
         // data = [result.id, result.userName]
-        data = [result.id, result.userName,"requestBudge"]
+        data = [result.id, result.role, result.userName,"requestBudge"]
        } else{
-        data = [result.id, result.userName,"approveBudge"]
+        data = [result.id, result.role, result.userName,"approveBudge"]
         // data = [result.id, result.userName]
        }
       // console.log("data: ",data);

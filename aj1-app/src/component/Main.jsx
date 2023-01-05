@@ -1,23 +1,40 @@
 import React,{useState} from "react";
-import List from "./List";
-import Hedder from "./Hedder"
-import GivingBudge from "./GivingBudge";
 
-// export default 
-function Main({setScreen, screen}) {
-    const state = ["aaa","bbb","ccc"];
-    const [display,setDisp] = useState("list");
-    const admin = 1;
+export default function Main({setScreen, screen, setUser, user, list}) {
+ 
+    console.log("mainJs5 user: ",user);
     return(
-        <>
-            {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp}/> */}
-            <div>
-                {
-                  (display === "list")?
-                    <List setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/>:
-                    <GivingBudge setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/>
+        <> 
+            <ul>
+                <li
+                onClick={
+                    ()=>{
+                        console.log("no11: clicked");
+                        setScreen("List");
+                        console.log(screen);
+                    }
                 }
-            </div>
+            >自分のスキルを見る</li>
+            <li>取得したスキルを申請する</li>
+            <li>メンバーのスキルを見る</li>
+            {
+                (user[1] === 1) ?
+                    <div>申請スキルの承認をする</div>:
+                    ""
+            }
+                
+            </ul>
         </>
     )
 }
+
+
+            // <
+            // >自分のスキルを見る</>
+            // <div>取得したスキルを申請する</div>
+            // <div>メンバーのスキルを見る</div>
+            // {
+            //     (user[1] === 1) ?
+            //         <div>申請スキルの承認をする</div>:
+            //         ""
+            // }
