@@ -3,14 +3,12 @@ import axios from "axios"
 import {useEffect, useState} from "react"
 import Convert from './component/Convert';
 
-const baseURL = "http://localhost:8080/"
-
 function App() {
 
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    axios.get(baseURL)
+    axios.get("/")
       .then(res => {
         setPost(res.data)
       })

@@ -5,10 +5,7 @@ import "../style/button.css"
 import Hedder from "./Hedder"
 import axios from "axios";
 
-
 export default function Login({setScreen, screen, setUser}){
-
-    const baseURL = "http://localhost:8080/"
 
     return (
         <>
@@ -55,7 +52,7 @@ export default function Login({setScreen, screen, setUser}){
                             // setScreen("List");
                             axios({
                                 method: "post",
-                                url:`${baseURL}login`,
+                                url:"/login",
                                 data: data,
                             })
                                 .then(res => {
