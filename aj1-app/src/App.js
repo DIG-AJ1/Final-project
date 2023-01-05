@@ -20,6 +20,7 @@ function App() {
         setPost(res.data)
         console.log("inner axios/get");
         console.log(res.data);
+        console.log(res.status);
       })
   },[])
 
