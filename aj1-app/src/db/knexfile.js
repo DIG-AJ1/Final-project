@@ -23,7 +23,7 @@ module.exports = {
     client: 'pg',
     // connection: process.env.DATABASE_URL
     connection: {
-      host: "http://aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com/",
+      host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
       password: "password",
       database: "finalproject"
