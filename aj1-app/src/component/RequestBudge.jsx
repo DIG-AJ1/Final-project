@@ -20,20 +20,20 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
     const [allBudge,setAllbudge] = useState([]);
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
-    const [startDate, setStartDate] = useState(new Date());
+    const [certificationDate, setCertificationDate] = useState(new Date());
 
     useEffect(() => {
         axios.get("/assignBudge/budge")
-            .then(res => {
-                setAllbudge(res.data);
-                setBadges(res.data.map((elem) => [elem.id,elem.budge_name]))
-            })
+        .then(res => {
+            setAllbudge(res.data);
+            setBadges(res.data.map((elem) => [elem.id,elem.budge_name]))
+        })
 
-            axios.get("/assignBudge/user")
-            .then(res => {
-                setAllpeople(res.data)
-                setPeople(res.data.map((elem) => elem.user_name))
-            })
+        axios.get("/assignBudge/user")
+        .then(res => {
+            setAllpeople(res.data)
+            setPeople(res.data.map((elem) => elem.user_name))
+        })
 
     },[])
 
@@ -65,8 +65,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
                         }
                     </select>
                 </label>
-                <DatePicker popperPlacement="bottom" selected={startDate} onChange={(date) => setStartDate(date)} />
-                {console.log(startDate)}
+                <DatePicker popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
                 <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
                 <button
                     className="log-btn"
@@ -81,7 +80,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
                             budge_id : offerBadge[0],
                             // status : 1,
                             url : document.getElementById("evidence").value,
-                            certification_date: moment().format('YYYY/MM/DD'),
+                            certification_date: moment(certificationDate).format("YYYY/MM/DD"),
                             // user_id_budge_id: "40",
                             // budge_name: "nami-budge",
                             // budge_type: "budge_type",
