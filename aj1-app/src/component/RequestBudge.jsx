@@ -6,6 +6,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import "../style/Dropdown.css"
 import axios from "axios";
 import moment from 'moment';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function RequestBudge({setScreen, screen, admin, user, setPeople}){
     // const bagdeList = ["dig-1","dig-2","dig-3"];
@@ -18,6 +20,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
     const [allBudge,setAllbudge] = useState([]);
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
+    const [startDate, setStartDate] = useState(new Date());
 
     useEffect(() => {
         axios.get("/assignBudge/budge")
@@ -62,6 +65,8 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
                         }
                     </select>
                 </label>
+                <DatePicker popperPlacement="bottom" selected={startDate} onChange={(date) => setStartDate(date)} />
+                {console.log(startDate)}
                 <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
                 <button
                     className="log-btn"
