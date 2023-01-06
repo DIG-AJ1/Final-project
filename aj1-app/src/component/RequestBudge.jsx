@@ -1,20 +1,20 @@
 import React ,{useState, useEffect} from "react";
-import Hedder from "./Hedder";
-import BudgeHedder from "./BudgeHedder"
+import Header from "./Header";
+// import BudgeHedder from "./BudgeHedder"
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import "../style/Dropdown.css"
 import axios from "axios";
 import moment from 'moment';
 
-export default function GivingBudge({setScreen, screen, admin, user}){
+export default function RequestBudge({setScreen, screen, admin, user, setPeople}){
     // const bagdeList = ["dig-1","dig-2","dig-3"];
     // const people = ["asai","asano","yamakuzu","hiraoka","miura"];
 
     const [offerBadge,setBadge] = useState("");
-    const [offerPerson,setPerson] = useState("");
+    // const [offerPerson,setPerson] = useState("");
     const [bugdeList,setBadges] = useState([]);
-    const [people,setPeople] = useState([]);
+    // const [people,setPeople] = useState([]);
     const [allBudge,setAllbudge] = useState([]);
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
@@ -39,7 +39,7 @@ export default function GivingBudge({setScreen, screen, admin, user}){
     return(
         <>
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
-            <BudgeHedder setScreen={setScreen} screen={screen} admin={admin} />
+            <Header setScreen={setScreen}/>
             <div className="form">
                 <label className="drop-wrap">
                     <select 
@@ -58,7 +58,7 @@ export default function GivingBudge({setScreen, screen, admin, user}){
                     >
                         <option value="" defaultValue="" disabled>Select Badge</option>
                         {
-                            bugdeList.map((badge, key) => <option key={key} value={badge[1]}>{badge[1]}</option>)
+                            bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)
                         }
                     </select>
                 </label>
@@ -81,11 +81,11 @@ export default function GivingBudge({setScreen, screen, admin, user}){
                             // budge_name: "nami-budge",
                             // budge_type: "budge_type",
                         })                        
-                        .then(() => setScreen("List"))                        
+                        .then(() => setScreen("MyBudgeList"))                        
                         .catch(err => console.log("err:", err));
                     }}
                 >
-                    REQUEST
+                    申請する
                 </button>
             </div>
         </>

@@ -106,6 +106,26 @@ app.post("/requestBudge", (req, res) => {
   .catch((err) => res.status(400).send(err));
 });
 
+app.post("/memberList", (req, res) => {
+  // console.log("req: ",req.body);
+  const user_id = req.body.user_id;
+  // console.log("user_id: ", user_id);
+
+  knex.select({
+    user_id: "id",
+    user_name: "user_name",
+    department_id: "department_id"
+  })
+  .from("user")
+  // .innerJoin("department", "department.id","=","user.department_id")
+  // .where("department_id" ,"=", data.department_id)
+  .then((result) => {
+    const data = result;
+    res.status(200).send(data);  
+  })
+  .catch((err) => res.status(400).send(err));
+});
+
 app.get("/approveBudge", (req, res) => {
   const status = Number(req.query.status);
   knex.select({

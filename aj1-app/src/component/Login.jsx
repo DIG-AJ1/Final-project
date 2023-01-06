@@ -2,14 +2,14 @@ import React from "react";
 // import Button from "reacr-bootstrap/Button";
 import "../style/Login.css"
 import "../style/button.css"
-import Hedder from "./Hedder"
+import Header from "./Header"
 import axios from "axios";
 
-export default function Login({setScreen, screen, setUser}){
+export default function Login({setScreen, screen, setUser, setRole}){
 
     return (
         <>
-            <Hedder setScreen={setScreen} screen={screen}/>
+            <Header setScreen={setScreen} screen={screen}/>
             <div className="form">
                 <input 
                     className="intext"
@@ -49,7 +49,6 @@ export default function Login({setScreen, screen, setUser}){
                             warNoText.style.display = "block";
                             warDiff.style.display = "none";
                         } else {
-                            // setScreen("List");
                             axios({
                                 method: "post",
                                 url:"/login",
@@ -59,13 +58,10 @@ export default function Login({setScreen, screen, setUser}){
                                     if(res.data){
                                         setScreen("Main");
 
-                                        // if (res.data[2]==="requestBudge"){
-                                        //     setScreen("List");
-                                        // } else{
-                                        //     setScreen("approveBudge")
-                                        // }
                                         setUser(res.data);
-                                        // console.log(res.data);
+                                        console.log(res.data);
+
+                                        setRole(res.data[1]);
                                         
                                     }else{
                                         warNoText.style.display = "none";

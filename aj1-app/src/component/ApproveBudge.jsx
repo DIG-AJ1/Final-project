@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
-import BudgeHedder from "./BudgeHedder";
+import Header from "./Header";
 
 export default function ApproveBudge({setScreen, screen, admin}) {
 
@@ -25,7 +25,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
 
     return (
         <>
-            <BudgeHedder setScreen={setScreen} screen={screen} admin={admin}/>
+            <Header setScreen={setScreen}/>
             <Table striped bordered hover>
                 <thead>
                     <tr>

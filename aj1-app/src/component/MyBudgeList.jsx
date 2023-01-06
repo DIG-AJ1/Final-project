@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../style/List.css";
-import Hedder from "./Hedder";
+import Header from "./Header";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 
-export default function List({ setScreen, screen, user, list }) {
+export default function MyBudgeList({ setScreen, screen, user, list }) {
 
   const [budge, setBudge] = useState([]);
 
@@ -30,7 +30,7 @@ export default function List({ setScreen, screen, user, list }) {
 
   return (
     <>
-      <Hedder setScreen={setScreen} screen={screen} admin={1} />
+      <Header setScreen={setScreen}/>
       <Table striped bordered hover>
         <thead>
           <tr>

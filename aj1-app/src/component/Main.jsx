@@ -1,20 +1,22 @@
 import React,{useState} from "react";
-import BudgeHedder from "./BudgeHedder"
+// import BudgeHedder from "./BudgeHedder"
 import ListGroup from 'react-bootstrap/ListGroup';
 import ApproveBudge from "./ApproveBudge";
+import Header from "./Header";
 
 export default function Main({setScreen, screen, setUser, user, list}) {
  
     console.log("mainJs5 user: ",user);
     return(
         <> 
-            <BudgeHedder setScreen={setScreen} screen={screen}/>
+            <Header setScreen={setScreen}/>
+            {/* <BudgeHedder setScreen={setScreen} screen={screen}/> */}
             {/* <ul>
                 <li
                 onClick={
                     ()=>{
                         console.log("no11: clicked");
-                        setScreen("List");
+                        setScreen("MyBudgeList");
                         console.log(screen);
                     }
                 }
@@ -33,7 +35,7 @@ export default function Main({setScreen, screen, setUser, user, list}) {
                     onClick={
                         ()=>{
                             console.log("no11: clicked");
-                            setScreen("List");
+                            setScreen("MyBudgeList");
                             console.log(screen);
                         }
                     }>自分のスキルを見る
@@ -42,7 +44,7 @@ export default function Main({setScreen, screen, setUser, user, list}) {
                     onClick={
                         ()=>{
                             console.log("no40: clicked");
-                            setScreen("Badge");
+                            setScreen("RequestBudge");
                             console.log(screen);
                         }
                     }>取得したスキルを申請する
@@ -51,14 +53,22 @@ export default function Main({setScreen, screen, setUser, user, list}) {
                     onClick={
                         ()=>{
                             console.log("no52: clicked");
-                            setScreen("ListOfMembers");
+                            setScreen("MemberList");
                             console.log(screen);
                         }
                     }>メンバーのスキルを見る
                 </ListGroup.Item>
                 {
                     (user[1] === 1) ?
-                        <ListGroup.Item>申請スキルの承認をする</ListGroup.Item> : ""
+                        <ListGroup.Item
+                            onClick={
+                                ()=>{
+                                    console.log("no52: clicked");
+                                    setScreen("ApproveBudge");
+                                    console.log(screen);
+                                }
+                            }>申請スキルの承認をする
+                        </ListGroup.Item> : ""
                 }
             </ListGroup>
         </>
