@@ -31,6 +31,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                     <tr>
                         <th>依頼者名</th>
                         <th>資格名</th>
+                        <th>取得日</th>
                         <th>エビデンスURL</th>
                         <th>承認</th>
                         <th>棄却</th>
@@ -42,6 +43,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                             <tr>
                                 <th>{record.user_name}</th>
                                 <th>{record.budge_name}</th>
+                                <th>{record.certification_date}</th>
                                 <th>{record.url}</th>
                                 <th>
                                     <Button

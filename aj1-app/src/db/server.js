@@ -83,6 +83,7 @@ app.post("/viewBudge", (req, res) => {
   .innerJoin("budge_type", "budge_type.id","=","budge.budge_type_id")
   .where("user_id" ,"=", user_id)
   .then((result) => {
+    console.log("result: ", result)
     const data = result;
     res.status(200).send(data);  
   })

@@ -4,7 +4,7 @@ import Table from "react-bootstrap/esm/Table";
 import axios from "axios";
 import { useState } from "react";
 
-export default function MemberList({ setScreen, user }) {
+export default function MemberList({ setScreen, user , targetUser, setTargetUser}) {
 
     const [ userListArray, setUserListArray ] = useState([]);
 
@@ -17,7 +17,7 @@ export default function MemberList({ setScreen, user }) {
                     url: "/memberList",
                     data : {user_id: user[0]}
                 });
-                console.log(response.data);
+                console.log("no.20: ", response.data);
                 setUserListArray(response.data);
             } catch (error) {
                 console.error(error);
@@ -38,7 +38,13 @@ export default function MemberList({ setScreen, user }) {
                 <tbody >
                     {userListArray.map((obj, key) => {
                             return (
-                                <tr key={key}>
+                                <tr
+                                    onClick={()=>{
+                                        setScreen("MyBudgeList")
+                                        console.log("obj: ", obj)
+                                        setTargetUser(obj)
+                                    }} 
+                                    key={key}>
                                     <td>{obj.user_name}</td>
                                 </tr>
                             )

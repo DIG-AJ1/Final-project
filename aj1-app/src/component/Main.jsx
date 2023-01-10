@@ -9,7 +9,7 @@ export default function Main({setScreen, screen, setUser, user, list}) {
     console.log("mainJs5 user: ",user);
     return(
         <> 
-            <Header setScreen={setScreen}/>
+            <Header setScreen={setScreen} />
             {/* <BudgeHedder setScreen={setScreen} screen={screen}/> */}
             {/* <ul>
                 <li
@@ -70,6 +70,16 @@ export default function Main({setScreen, screen, setUser, user, list}) {
                             }>申請スキルの承認をする
                         </ListGroup.Item> : ""
                 }
+                <ListGroup.Item
+                    onClick={
+                        () => {
+                            console.log("namiTest")
+                            setScreen("ResultPublication")
+                        }
+                    }
+                >
+                    nami-test
+                </ListGroup.Item>
             </ListGroup>
         </>
     )

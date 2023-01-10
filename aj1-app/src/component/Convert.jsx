@@ -8,6 +8,7 @@ import ApproveBudge from "./ApproveBudge";
 // import axios from "axios";
 // import MyBudgeList from "./MyBudgeList";
 import MemberList from "./MemberList";
+import ResultPublication from "./ResultPublication"
 
 
 export default function Convert() {
@@ -15,7 +16,24 @@ export default function Convert() {
     const [user,setUser] = useState([]);
     const [role,setRole] = useState(0); // 0:承認権限なし 1:承認権限あり
     const [list, setList] = useState([]);
+    const [targetUser, setTargetUser] = useState({});
 
+    // return (
+    //     <>
+    //         <div>
+    //             {
+    //                 (screen === "Login") ?
+    //                     <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
+    //                         <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/> : (screen === "MyBudgeList") ?
+    //                             <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : (screen === "RequestBudge") ?
+    //                                 <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
+    //                                     <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
+    //                                         <ApproveBudge setScreen={setScreen} screen={screen}/> : <Login />
+    //             }
+    //         </div>
+    //     </>
+    // );
+    //nami-test
     return (
         <>
             <div>
@@ -23,14 +41,16 @@ export default function Convert() {
                     (screen === "Login") ?
                         <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
                             <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/> : (screen === "MyBudgeList") ?
-                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/> : (screen === "RequestBudge") ?
+                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : (screen === "RequestBudge") ?
                                     <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
-                                        <MemberList setScreen={setScreen} user={user}/> : (screen === "ApproveBudge" && role === 1) ?
-                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : <Login />
+                                        <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
+                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : (screen === "ResultPublication") ? <ResultPublication /> : <Login />
                 }
             </div>
         </>
     );
+
+
     
 
 }

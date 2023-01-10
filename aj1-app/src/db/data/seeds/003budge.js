@@ -14,5 +14,9 @@ exports.seed = async function(knex) {
     {id: 6, budge_name: 'Express', budge_type_id: '1'},
     {id: 7, budge_name: 'swift', budge_type_id: '1'},
     {id: 8, budge_name: 'AWS', budge_type_id: '1'},
+    {id: 9, budge_name: 'AWS2', budge_type_id: '1'},
+    {id: 10, budge_name: 'AWS3', budge_type_id: '1'},
+    {id: 11, budge_name: 'AWS4', budge_type_id: '1'},
+    {id: 12, budge_name: 'AWS5', budge_type_id: '1'},
   ]);
 };
