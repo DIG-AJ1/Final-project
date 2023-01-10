@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/", express.static(__dirname + "../../public"));
 app.use(
   cors({
-    origin: ["http://13.231.224.242:3000"],
+    origin: ["http://18.183.174.12:3000"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
   })
