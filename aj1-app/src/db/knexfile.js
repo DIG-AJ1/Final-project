@@ -26,7 +26,8 @@ module.exports = {
       host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
       password: "password",
-      database: "finalproject"
+      database: "finalproject",
+      charset: "utf8"
     },
     ssl: {
       rejectUnauthorized: false
