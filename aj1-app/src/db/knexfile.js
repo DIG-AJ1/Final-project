@@ -5,23 +5,21 @@
  */
 module.exports = {
 
-  // development: {
-  //   client: 'pg',
-  //   connection: {
-  //     user: process.env.POSTGRES_USER || "user",
-  //     database: process.env.POSTGRES_DB || "finalproject",
-  //     password: process.env.PASSWORD
-  //   },
-  //   migrations: {
-  //     directory: "./data/migrations",
-  //   },
-  //   seeds: { directory: "./data/seeds" },
-  // },
-
-  // production: {
   development: {
     client: 'pg',
-    // connection: process.env.DATABASE_URL
+    connection: {
+      user: process.env.POSTGRES_USER || "user",
+      database: process.env.POSTGRES_DB || "finalproject",
+      password: process.env.PASSWORD
+    },
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: { directory: "./data/seeds" },
+  },
+
+  development: {
+    client: 'pg',
     connection: {
       host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
