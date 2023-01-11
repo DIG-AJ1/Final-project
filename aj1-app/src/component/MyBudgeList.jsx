@@ -32,7 +32,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
   return (
     <>
       <Header setScreen={setScreen} screen={screen}/>
-      <div>🌻🌻🌻  取得済 🌻🌻🌻</div>
+      <h2>🌻🌻🌻  取得済 🌻🌻🌻</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -64,9 +64,11 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
           )})}
         </tbody>
       </Table>
-      <div>🙇🙇🙇 申請中 🙇🙇🙇</div>
+      <h2>🙇🙇🙇 申請中 🙇🙇🙇</h2>
       <Table></Table>
-      <div>未取得</div>
+      <h2>棄却</h2>
+      <Table></Table>
+      <h2>未取得</h2>
     </>
   );
 }
