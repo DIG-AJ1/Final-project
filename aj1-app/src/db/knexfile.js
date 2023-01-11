@@ -21,9 +21,9 @@ module.exports = {
   production: {
     client: 'pg',
     connection: {
-      host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
+      host: "aws-test2-infra-db-postgres.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
-      password: "password",
+      password: "test2password",
       database: "finalproject",
       charset: "utf8"
     },
