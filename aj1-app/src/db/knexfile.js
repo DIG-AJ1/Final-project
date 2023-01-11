@@ -18,7 +18,7 @@ module.exports = {
     seeds: { directory: "./data/seeds" },
   },
 
-  development: {
+  production: {
     client: 'pg',
     connection: {
       host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
