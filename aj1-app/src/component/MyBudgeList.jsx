@@ -32,7 +32,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
   return (
     <>
       <Header setScreen={setScreen} screen={screen}/>
-      <h2>🌻🌻🌻  取得済 🌻🌻🌻</h2>
+      <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -49,7 +49,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
             }else if(record[1]===1){
               record[1]="申請中"
             }else if(record[1]===2){
-              record[1]="取得済"
+              record[1]="取得済🏅"
             }else if(record[1]===3){
               record[1]="棄却"
             }
