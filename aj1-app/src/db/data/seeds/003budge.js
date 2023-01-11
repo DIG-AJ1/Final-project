@@ -6,6 +6,7 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('budge').del()
   await knex('budge').insert([
+    {id: 0, budge_name: '資格を選んでください', budge_type_id: '1'},
     {id: 1, budge_name: 'ITパスポート', budge_type_id: '1'},
     {id: 2, budge_name: '情報セキュリティマネジメント', budge_type_id: '1'},
     {id: 3, budge_name: '基本情報技術者', budge_type_id: '1'},

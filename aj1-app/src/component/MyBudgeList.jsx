@@ -47,7 +47,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
             if(record[1]===0){
               record[1]="未取得"
             }else if(record[1]===1){
-              record[1]="申請中"
+              record[1]="申請中🙇"
             }else if(record[1]===2){
               record[1]="取得済🏅"
             }else if(record[1]===3){
