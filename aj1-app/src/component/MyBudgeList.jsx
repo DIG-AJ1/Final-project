@@ -3,6 +3,7 @@ import "../style/List.css";
 import Header from "./Header";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
+import "../style/myBudgeList.css";
 
 export default function MyBudgeList({ setScreen, screen, user, list, targetUser }) {
 
@@ -28,19 +29,16 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
     func();
   }, [user]);
 
-  
-
-
   return (
     <>
       <Header setScreen={setScreen} screen={screen}/>
       <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
-      <Table striped bordered hover>
+      <Table striped bordered >
         <thead>
           <tr>
-            <th>資格名</th>
-            <th>取得日</th>
-            <th>エビデンスURL</th>
+            <th className="table some-other-class-1">資格名</th>
+            <th className="table some-other-class-2">取得日</th>
+            <th className="table some-other-class-3">エビデンスURL</th>
           </tr>
         </thead>
         <tbody>
@@ -63,9 +61,9 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>資格名</th>
-            <th>取得日</th>
-            <th>エビデンスURL</th>
+            <th className="table some-other-class-1">資格名</th>
+            <th className="table some-other-class-2">取得日</th>
+            <th className="table some-other-class-3">エビデンスURL</th>
           </tr>
         </thead>
         <tbody>
@@ -88,9 +86,9 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>資格名</th>
-            <th>取得日</th>
-            <th>エビデンスURL</th>
+            <th className="table some-other-class-1">資格名</th>
+            <th className="table some-other-class-2">取得日</th>
+            <th className="table some-other-class-3">エビデンスURL</th>
           </tr>
         </thead>
         <tbody>
