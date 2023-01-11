@@ -19,9 +19,7 @@ module.exports = {
   },
 
   production: {
-  // development: {
     client: 'pg',
-    // connection: process.env.DATABASE_URL
     connection: {
       host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
