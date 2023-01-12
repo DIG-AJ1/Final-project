@@ -43,11 +43,13 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
         <>
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
             <Header setScreen={setScreen}/>
-            <form className="drop-wrap">
+            <h1>取得バッジ申請</h1>
+            <form className="">
                 <div className="form-group">
                     <label>申請バッジ　</label>
-                    <select className="DropdownButton"
-                        onChange={(event) => {
+                    {/* <select className="DropdownButton" */}
+                    <select className=""
+                    onChange={(event) => {
                             for(let element of bugdeList){
                                 if(element[1]===event.target.value){
                                     setBadge([element[0],element[1]])}
@@ -60,15 +62,20 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
             </form>
             <form>
                 <div className="form-group">
-                        <label>取得日　
-                        </label>
-                        <DatePicker className="dropdown" popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
+                        <label>エビデンスURL　</label>
+                        <input 
+                            value={text} id="evidence"
+                            placeholder="https://drive.google.com/drive/folders/..."
+                            onChange={(event) => setText(event.target.value)
+                        }/>
                 </div>
             </form>
-            <div className="flex">
-                    <label>エビデンスURL　</label>
-                    <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
-            </div>
+                        <form>
+                            <div className="form-group">
+                                    <label>取得日　</label>
+                                    <DatePicker inline className="dropdown" popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
+                            </div>
+                        </form>
             <div className="mb-3">
                 <button
                     className="log-btn"
