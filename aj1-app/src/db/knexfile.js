@@ -20,7 +20,13 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: {
+      host: "aws-test2-infra-db-postgres.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
+      user: "root",
+      password: "test2password",
+      database: "finalproject",
+      charset: "utf8"
+    },
     ssl: {
       rejectUnauthorized: false
     },

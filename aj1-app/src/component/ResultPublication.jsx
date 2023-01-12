@@ -9,11 +9,11 @@ export default function ResultPublication(){
     const { reward, isAnimating } = useReward('rewardid', 'confetti');
     const [play, { stop, pause }] = useSound(sound)
     return(
-        <div>
-            <label className="namilabel">承認されました！</label>
-            <img className="namiImage" src={Image}></img>
+        <div className="resultDiv">
+            <label className="resultLabel">承認されました！</label>
+            <img className="resultImage" src={Image}></img>
             <button
-                className="nami-btn"
+                className="result-btn"
                 disabled={isAnimating}
                 onClick={() => {
                     play();
