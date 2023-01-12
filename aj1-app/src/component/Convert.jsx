@@ -44,7 +44,7 @@ export default function Convert() {
                                 <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : (screen === "RequestBudge") ?
                                     <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
                                         <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
-                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : (screen === "ResultPublication") ? <ResultPublication /> : <Login />
+                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : <Login />
                 }
             </div>
         </>

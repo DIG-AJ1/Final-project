@@ -11,18 +11,18 @@ const app = express();
 app.use(express.json());
 app.use("/", express.static(__dirname + "../../public"));
 app.use((req, res, next) => {
-  // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
-app.use(
-  cors({
-    origin: ["http://18.183.174.12:3000"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://18.183.174.12:3000"],
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//     credentials: true
+//   })
+// );
 
 app.get("/", (req, res) => {
     let message = "Hello world! From Server express.js!!!"
