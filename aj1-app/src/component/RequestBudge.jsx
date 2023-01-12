@@ -43,30 +43,33 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
         <>
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
             <Header setScreen={setScreen}/>
-            <div className="form">
-                <label className="drop-wrap">
-                    <select 
-                        className="dropdown"
+            <form className="drop-wrap">
+                <div className="form-group">
+                    <label>申請バッジ　</label>
+                    <select className="DropdownButton"
                         onChange={(event) => {
-                            console.log("event: ",event);
-                            console.log("budgeList: ",bugdeList);
                             for(let element of bugdeList){
                                 if(element[1]===event.target.value){
-                                    console.log(element[0],element[1]);
-                                    setBadge([element[0],element[1]])
+                                    setBadge([element[0],element[1]])}
                                 }
-                            }
-                            // setBadge(event.target.value);
-                        }}  
-                    >
-                        <option value="" defaultValue="" disabled>Select Badge</option>
-                        {
-                            bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)
-                        }
+                            }}>
+                        {/* <option value="" defaultValue="" disabled>Select Badge</option> */}
+                        {bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)}
                     </select>
-                </label>
-                <DatePicker popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
-                <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
+                </div>
+            </form>
+            <form>
+                <div className="form-group">
+                        <label>取得日　
+                        </label>
+                        <DatePicker className="dropdown" popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
+                </div>
+            </form>
+            <div className="flex">
+                    <label>エビデンスURL　</label>
+                    <input value={text} id="evidence" onChange={(event) => setText(event.target.value)}/>
+            </div>
+            <div className="mb-3">
                 <button
                     className="log-btn"
                     variant="primary"
@@ -87,11 +90,10 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
                         })                        
                         .then(() => setScreen("MyBudgeList"))                        
                         .catch(err => console.log("err:", err));
-                    }}
-                >
+                    }}>
                     申請する
                 </button>
-            </div>
+           </div>
         </>
     )
 }
