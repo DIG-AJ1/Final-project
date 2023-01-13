@@ -44,7 +44,9 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                 <th>{record.user_name}</th>
                                 <th>{record.budge_name}</th>
                                 <th>{record.certification_date}</th>
-                                <th>{record.url}</th>
+                                <td ></td>
+
+                                <th><a href={record.url} target="_blank">{record.url.substr(0,30)}...</a></th>
                                 <th>
                                     <Button
                                         variant='success'

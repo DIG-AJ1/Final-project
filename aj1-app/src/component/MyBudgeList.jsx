@@ -54,7 +54,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                       <tr>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
-                        <td>{record[2]}</td>
+                        <td ><a href={record[2]} target="_blank">{record[2].substr(0,30)}...</a></td>
                       </tr>
                     )
                   }
@@ -86,7 +86,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                       <tr>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
-                        <td>{record[2]}</td>
+                        <td ><a href={record[2]} target="_blank">{record[2].substr(0,30)}...</a></td>
                       </tr>
                     )
                   }
@@ -118,7 +118,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                       <tr>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
-                        <td>{record[2]}</td>
+                        <td ><a href={record[2]} target="_blank">{record[2].substr(0,30)}...</a></td>
                       </tr>
                     )
                   }
