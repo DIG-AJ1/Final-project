@@ -33,80 +33,101 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
     <>
       <Header setScreen={setScreen} screen={screen}/>
       <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
-      <Table striped bordered >
-        <thead>
-          <tr>
-            <th className="table some-other-class-1">資格名</th>
-            <th className="table some-other-class-2">取得日</th>
-            <th className="table some-other-class-3">エビデンスURL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            budge.map((record, key) => {
-              if(record[1] === 2) {
-                return(
-                  <tr>
-                    <td>{record[0]}</td>
-                    <td>{record[3]}</td>
-                    <td>{record[2]}</td>
-                  </tr>
-                )
+      {
+        (budge.filter(record => record[1] === 2).length === 0) ?
+          <h4>表示するものがありません</h4>
+        :
+        (
+          <Table striped bordered >
+            <thead>
+              <tr>
+                <th className="table some-other-class-1">資格名</th>
+                <th className="table some-other-class-2">取得日</th>
+                <th className="table some-other-class-3">エビデンスURL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                budge.map((record, key) => {
+                  if(record[1] === 2) {
+                    return(
+                      <tr>
+                        <td>{record[0]}</td>
+                        <td>{record[3]}</td>
+                        <td>{record[2]}</td>
+                      </tr>
+                    )
+                  }
+                })
               }
-            })
-          }
-        </tbody>
-      </Table>
+            </tbody>
+          </Table>
+        )
+      }
       <h2>🙇🙇🙇 申請中 🙇🙇🙇</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th className="table some-other-class-1">資格名</th>
-            <th className="table some-other-class-2">取得日</th>
-            <th className="table some-other-class-3">エビデンスURL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            budge.map((record, key) => {
-              if(record[1] === 1) {
-                return(
-                  <tr>
-                    <td>{record[0]}</td>
-                    <td>{record[3]}</td>
-                    <td>{record[2]}</td>
-                  </tr>
-                )
+      {
+        (budge.filter(record => record[1] === 1).length === 0) ?
+          <h4>表示するものがありません</h4>
+        :
+        (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th className="table some-other-class-1">資格名</th>
+                <th className="table some-other-class-2">取得日</th>
+                <th className="table some-other-class-3">エビデンスURL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                budge.map((record, key) => {
+                  if(record[1] === 1) {
+                    return(
+                      <tr>
+                        <td>{record[0]}</td>
+                        <td>{record[3]}</td>
+                        <td>{record[2]}</td>
+                      </tr>
+                    )
+                  }
+                })
               }
-            })
-          }
-        </tbody>
-      </Table>
+            </tbody>
+          </Table>
+        )
+      }
       <h2>🙅🙅🙅 棄却 🙅🙅🙅</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th className="table some-other-class-1">資格名</th>
-            <th className="table some-other-class-2">取得日</th>
-            <th className="table some-other-class-3">エビデンスURL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            budge.map((record, key) => {
-              if(record[1] === 3) {
-                return(
-                  <tr>
-                    <td>{record[0]}</td>
-                    <td>{record[3]}</td>
-                    <td>{record[2]}</td>
-                  </tr>
-                )
+      {
+        (budge.filter(record => record[1] === 3).length === 0) ?
+          <h4>表示するものがありません</h4>
+        :
+        (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th className="table some-other-class-1">資格名</th>
+                <th className="table some-other-class-2">取得日</th>
+                <th className="table some-other-class-3">エビデンスURL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                budge.map((record, key) => {
+                  if(record[1] === 3) {
+                    return(
+                      <tr>
+                        <td>{record[0]}</td>
+                        <td>{record[3]}</td>
+                        <td>{record[2]}</td>
+                      </tr>
+                    )
+                  }
+                })
               }
-            })
-          }
-        </tbody>
-      </Table>
+            </tbody>
+          </Table>
+        )
+      }
     </>
   )
 }
