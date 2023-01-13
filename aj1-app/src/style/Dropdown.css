@@ -1,13 +1,35 @@
 
 form{
-  text-align: left;
-  align-items: left;
+  text-align: center;
+  align-items: center;
+  
 }
 
 label{
   display: inline-block;
   text-align: right;
-  width:300px;
+  width:200px;
+  /* padding: auto; */
+  margin-right: 5%;
+}
+
+select{
+  display: inline-block;
+  text-align: left;
+  width:250px;
+}
+
+input{
+  display: inline-block;
+  text-align: left;
+  width:250px;
+  ;
+}
+
+#datePicker{
+  display: inline-block;
+  text-align: left;
+  width: 300px;
 }
 
 .form-group {

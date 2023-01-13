@@ -44,38 +44,37 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
             {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
             <Header setScreen={setScreen}/>
             <h1>取得バッジ申請</h1>
-            <form className="">
-                <div className="form-group">
-                    <label>申請バッジ　</label>
-                    {/* <select className="DropdownButton" */}
-                    <select className=""
-                    onChange={(event) => {
-                            for(let element of bugdeList){
-                                if(element[1]===event.target.value){
-                                    setBadge([element[0],element[1]])}
-                                }
-                            }}>
-                        {/* <option value="" defaultValue="" disabled>Select Badge</option> */}
-                        {bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)}
-                    </select>
-                </div>
+            <div>
+            <form className="form-group">
+                <label>申請バッジ</label>
+                <select className=""
+                onChange={(event) => {
+                    for(let element of bugdeList){
+                        if(element[1]===event.target.value){
+                            setBadge([element[0],element[1]])}
+                        }
+                    }}>
+                    {/* <option value="" defaultValue="" disabled>Select Badge</option> */}
+                    {bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)}
+                </select>
             </form>
-            <form>
-                <div className="form-group">
-                        <label>エビデンスURL　</label>
-                        <input 
-                            value={text} id="evidence"
-                            placeholder="https://drive.google.com/drive/folders/..."
-                            onChange={(event) => setText(event.target.value)
+            </div>
+            <div>
+                <form className="form-group">
+                    <label>エビデンスURL</label>
+                    <input 
+                        value={text} id="evidence"
+                        placeholder="https://drive.google.com/drive/folders/..."
+                        onChange={(event) => setText(event.target.value)
                         }/>
-                </div>
-            </form>
-                        <form>
-                            <div className="form-group">
-                                    <label>取得日　</label>
-                                    <DatePicker inline className="dropdown" popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
-                            </div>
-                        </form>
+                </form>
+            </div>
+            <div>
+                <form className="form-group">
+                    <label>取得日</label>
+                    <DatePicker id="datePicker" className="dropdown" popperPlacement="bottom" selected={certificationDate} onChange={(date) => setCertificationDate(date)} />
+                </form>
+            </div>
             <div className="mb-3">
                 <button
                     className="log-btn"
