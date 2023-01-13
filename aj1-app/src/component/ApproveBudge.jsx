@@ -3,10 +3,13 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Header from "./Header";
+import useSound from 'use-sound';
+import sound from "../sounds/eriko-home.mp3"
 
 export default function ApproveBudge({setScreen, screen, admin}) {
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
+    const [play, { stop, pause }] = useSound(sound)
 
     useEffect(() => {
         const getApplyList = async () => {
@@ -50,6 +53,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                                         variant='success'
                                         onClick={
                                             () => {
+                                                play();
                                                 axios.patch("/approveBudge", 
                                                     {user_id_budge_id:record.user_id_budge_id,  status: 2});
                                                 applyList.splice(key,1);

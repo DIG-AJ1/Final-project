@@ -10,13 +10,13 @@ import ApproveBudge from "./ApproveBudge";
 import MemberList from "./MemberList";
 import ResultPublication from "./ResultPublication"
 
-
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
     const [user,setUser] = useState([]);
     const [role,setRole] = useState(0); // 0:承認権限なし 1:承認権限あり
     const [list, setList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
+    const [resultFlag, setResultFlag] = useState([]);
 
     // return (
     //     <>
@@ -41,10 +41,10 @@ export default function Convert() {
                     (screen === "Login") ?
                         <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
                             <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list}/> : (screen === "MyBudgeList") ?
-                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : (screen === "RequestBudge") ?
+                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag} setResultFlag={setResultFlag}/> : (screen === "RequestBudge") ?
                                     <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
                                         <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
-                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser}/> : <Login />
+                                            <ApproveBudge setScreen={setScreen} screen={screen}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag}/> : <Login />
                 }
             </div>
         </>
