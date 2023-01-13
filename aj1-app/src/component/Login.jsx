@@ -22,6 +22,7 @@ export default function Login({setScreen, screen, setUser, setRole}){
                     id="pass"
                     type="text"
                     placeholder="Password"
+                    autoComplete="off"
                 />
 
                 <div className="warning">

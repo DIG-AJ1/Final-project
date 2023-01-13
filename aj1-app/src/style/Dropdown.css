@@ -1,39 +1,54 @@
 
-form{
-  text-align: center;
+
+.container{
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  
-}
-
-label{
-  display: inline-block;
-  text-align: right;
-  width:200px;
-  /* padding: auto; */
-  margin-right: 5%;
-}
-
-select{
-  display: inline-block;
-  text-align: left;
-  width:250px;
-}
-
-input{
-  display: inline-block;
-  text-align: left;
-  width:250px;
-  ;
-}
-
-#datePicker{
-  display: inline-block;
-  text-align: left;
-  width: 300px;
 }
 
 .form-group {
   display: inline-flex;
+  /* text-align: left; */
+}
+
+form{
+  /* text-align: center; */
+  /* align-items: center; */
+  
+}
+
+label{
+  display: inline-flex;
+  /* text-align: right; */
+  width:50%;
+  /* padding: auto; */
+  /* margin-right: 1%; */
+}
+
+select{
+  display: inline-block;
+  /* text-align: left; */
+  /* width:250px; */
+}
+
+input{
+  display: inline-block;
+  /* text-align: left; */
+  /* ; */
+}
+
+.input-area{
+  width:250px;
+  /* width: 30%; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
+
+#datePicker{
+  display: inline-block;
+  /* text-align: left; */
+  /* width: 200px; */
 }
 
 .drop-wrap {
