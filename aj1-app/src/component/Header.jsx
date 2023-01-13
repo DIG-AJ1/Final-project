@@ -1,60 +1,66 @@
 import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Header({setScreen,screen}) {
-    return (
-        <>
-            <Navbar bg="primary" variant="dark">
-                <Container>
-                    <Navbar.Brand
-                        onClick={
-                            ()=>{
-                                
-                                // console.log("no14: clicked");
-                                (screen === "Login")? setScreen("Login"): setScreen("Main");
-                                // console.log(screen);
-                            }
-                        }
-                        >Budge
-                    </Navbar.Brand>
-                </Container>
-                {/* {
-                    (user[1] === 1) ?
-                        <ListGroup.Item
+import Button from 'react-bootstrap/Button';
+
+export default function Header({setScreen, screen, user, setUser}) {
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand 
+            onClick={
+                ()=>{
+                    (screen === "Login")? setScreen("Login"): setScreen("Main");
+                }
+            }
+            >Budge
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+                {
+                    (screen !== "Login") ?
+                        <Button
+                            variant="link"
+                            className='text-light'
                             onClick={
                                 ()=>{
-                                    console.log("no52: clicked");
-                                    setScreen("ApproveBudge");
-                                    console.log(screen);
+                                    (screen === "Login")? setScreen("Login"): setScreen("Main");
+                                    }
                                 }
-                            }>申請スキルの承認をする
-                        </ListGroup.Item> : ""
-                } */}
-
-                {
-                    console.log("screen: ",screen)
+                            >Home
+                        </Button>
+                    :""
                 }
-                {   
-                    (screen === "MyBudgeList") ?
-                    
-                    <button variant="light"
-                        className='header-btn text-nowrap'
+            {
+                (screen === "MyBudgeList") ?
+                    <Button
+                        variant="link"
+                        className='text-light'
                         onClick={() => {
                             setScreen("MemberList")
-                        }}
-                        >All Members
-                    </button>:""
-                }
-
-                <button
-                    className='header-btn'
-                    onClick={() => {
-                        setScreen("Login")
-                    }}
-                    >Logout
-                </button>
-            </Navbar>
-        </>
-    );
+                        }}>All Members
+                    </Button>:""
+            }
+          </Nav>
+          <Nav>
+            <Nav className='text-light mt-2'>{user[2]}</Nav>
+            {
+                (screen !== "Login") ?
+                    <Button
+                        variant="link"
+                        className='text-light ms-3'
+                        onClick={() => {
+                            setScreen("Login")
+                            setUser("")
+                        }}>Logout
+                    </Button>:""
+            }
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }

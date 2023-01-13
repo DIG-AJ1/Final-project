@@ -4,20 +4,18 @@ import Table from "react-bootstrap/esm/Table";
 import axios from "axios";
 import { useState } from "react";
 
-export default function MemberList({ setScreen, user , targetUser, setTargetUser}) {
+export default function MemberList({ screen, setScreen, user , setUser, setTargetUser}) {
 
     const [ userListArray, setUserListArray ] = useState([]);
 
     useEffect(() => {
         const getUserList = async () => {
             try {
-                console.log("user:", user);
                 const response = await axios({
                     method: "post",
                     url: "/memberList",
                     data : {user_id: user[0]}
                 });
-                console.log("no.20: ", response.data);
                 setUserListArray(response.data);
             } catch (error) {
                 console.error(error);
@@ -28,20 +26,20 @@ export default function MemberList({ setScreen, user , targetUser, setTargetUser
 
     return(
         <>
-            <Header setScreen={setScreen}/>
+            <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
             <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>名前</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>名前</th>
+                    </tr>
                 </thead>
                 <tbody >
-                    {userListArray.map((obj, key) => {
-                            return (
+                    {
+                        userListArray.map((obj, key) => {
+                            return(
                                 <tr
                                     onClick={()=>{
                                         setScreen("MyBudgeList")
-                                        console.log("obj: ", obj)
                                         setTargetUser(obj)
                                     }} 
                                     key={key}>

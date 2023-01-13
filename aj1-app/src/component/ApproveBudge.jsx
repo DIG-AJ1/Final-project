@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import Header from "./Header";
 
-export default function ApproveBudge({setScreen, screen, admin}) {
+export default function ApproveBudge({ screen, setScreen, user, setUser }) {
 
     const [ applyList, setApplyList ] = useState([]); // ステータスが申請中のリスト
 
@@ -15,7 +15,6 @@ export default function ApproveBudge({setScreen, screen, admin}) {
                     params:{status: 1}
                 });
                 setApplyList(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error(error);
             }
@@ -25,7 +24,7 @@ export default function ApproveBudge({setScreen, screen, admin}) {
 
     return (
         <>
-            <Header setScreen={setScreen}/>
+            <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
             <Table striped bordered hover>
                 <thead>
                     <tr>

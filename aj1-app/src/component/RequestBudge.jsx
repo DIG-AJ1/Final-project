@@ -1,22 +1,16 @@
 import React ,{useState, useEffect} from "react";
 import Header from "./Header";
-// import BudgeHedder from "./BudgeHedder"
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import "../style/Dropdown.css"
 import axios from "axios";
 import moment from 'moment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function RequestBudge({setScreen, screen, admin, user, setPeople}){
-    // const bagdeList = ["dig-1","dig-2","dig-3"];
-    // const people = ["asai","asano","yamakuzu","hiraoka","miura"];
+export default function RequestBudge({setScreen, screen, user, setUser}){
 
     const [offerBadge,setBadge] = useState("");
-    // const [offerPerson,setPerson] = useState("");
     const [bugdeList,setBadges] = useState([]);
-    // const [people,setPeople] = useState([]);
+    const [people,setPeople] = useState([]);
     const [allBudge,setAllbudge] = useState([]);
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
@@ -37,28 +31,20 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
 
     },[])
 
-    const testBudge = ["JavaScript", "React", "Express", "swift", "AWS"]
-
     return(
         <>
-            {/* <Hedder setScreen={setScreen} screen={screen} admin={admin} setDisp={setDisp} state={state}/> */}
-            <Header setScreen={setScreen}/>
+            <Header setScreen={setScreen} screen={screen} user={user} setUser={setUser}/>
             <div className="form">
                 <label className="drop-wrap">
                     <select 
                         className="dropdown"
                         onChange={(event) => {
-                            console.log("event: ",event);
-                            console.log("budgeList: ",bugdeList);
                             for(let element of bugdeList){
                                 if(element[1]===event.target.value){
-                                    console.log(element[0],element[1]);
                                     setBadge([element[0],element[1]])
                                 }
                             }
-                            // setBadge(event.target.value);
-                        }}  
-                    >
+                        }}>
                         <option value="" defaultValue="" disabled>Select Badge</option>
                         {
                             bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)
@@ -72,28 +58,19 @@ export default function RequestBudge({setScreen, screen, admin, user, setPeople}
                     variant="primary"
                     onClick={() => {
                         const applicant=user[0];
-
                         const url = axios.post("/requestBudge",
-                        {
-                            user_id : applicant,
-                            // user_name : "nami",
-                            budge_id : offerBadge[0],
-                            // status : 1,
-                            url : document.getElementById("evidence").value,
-                            certification_date: moment(certificationDate).format("YYYY/MM/DD"),
-                            // user_id_budge_id: "40",
-                            // budge_name: "nami-budge",
-                            // budge_type: "budge_type",
-                        })                        
-                        .then(() => setScreen("MyBudgeList"))                        
+                            {
+                                user_id : applicant,
+                                budge_id : offerBadge[0],
+                                url : document.getElementById("evidence").value,
+                                certification_date: moment(certificationDate).format("YYYY/MM/DD"),
+                            })
+                        .then(() => setScreen("MyBudgeList"))
                         .catch(err => console.log("err:", err));
-                    }}
-                >
+                    }}>
                     申請する
                 </button>
             </div>
         </>
     )
 }
-
-//test test test

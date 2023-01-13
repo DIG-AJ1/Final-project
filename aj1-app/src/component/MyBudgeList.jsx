@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../style/List.css";
 import Header from "./Header";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import "../style/myBudgeList.css";
 
-export default function MyBudgeList({ setScreen, screen, user, list, targetUser }) {
-
-  const [budge, setBudge] = useState([]);
+export default function MyBudgeList({ screen, setScreen, user, setUser, targetUser, budge, setBudge }) {
 
   useEffect(() => {
     async function func() {
@@ -15,13 +13,12 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
             method: "post",
             url: "/viewBudge",
             data: {
-                // user_id: user[0],
                 user_id: targetUser.user_id? targetUser.user_id : user[0]
               },
         })
         .then((res) => {
             setBudge(res.data.map((obj) => {
-                return [obj.budge_name,obj.status,obj.url, obj.certification_date];
+              return [obj.budge_name,obj.status,obj.url, obj.certification_date];
             }));
         })
         .catch((err) => console.error(err));
@@ -31,7 +28,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
 
   return (
     <>
-      <Header setScreen={setScreen} screen={screen}/>
+      <Header setScreen={setScreen} screen={screen} user={user} setUser={setUser}/>
       <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
       {
         (budge.filter(record => record[1] === 2).length === 0) ?
@@ -51,7 +48,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                 budge.map((record, key) => {
                   if(record[1] === 2) {
                     return(
-                      <tr>
+                      <tr key={key}>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
                         <td>{record[2]}</td>
@@ -83,7 +80,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                 budge.map((record, key) => {
                   if(record[1] === 1) {
                     return(
-                      <tr>
+                      <tr key={key}>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
                         <td>{record[2]}</td>
@@ -115,7 +112,7 @@ export default function MyBudgeList({ setScreen, screen, user, list, targetUser 
                 budge.map((record, key) => {
                   if(record[1] === 3) {
                     return(
-                      <tr>
+                      <tr key={key}>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
                         <td>{record[2]}</td>

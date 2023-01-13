@@ -1,15 +1,15 @@
 import React from "react";
-// import Button from "reacr-bootstrap/Button";
-import "../style/Login.css"
-import "../style/button.css"
-import Header from "./Header"
+import Button from "react-bootstrap/Button";
+import "../style/Login.css";
+import "../style/button.css";
+import Header from "./Header";
 import axios from "axios";
 
-export default function Login({setScreen, screen, setUser, setRole}){
+export default function Login({screen, setScreen, user, setUser, setRole}){
 
     return (
         <>
-            <Header setScreen={setScreen} screen={screen}/>
+            <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
             <div className="form">
                 <input 
                     className="intext"
@@ -32,9 +32,9 @@ export default function Login({setScreen, screen, setUser, setRole}){
                     ユーザーが存在しないまたはパスワードが違います
                 </div>
 
-                <button
-                    className="log-btn"
-                    variant="primary"
+                <Button
+                    className="mb-2"
+                    variant="secondary"
                     onClick={() => {
                         const warNoText = document.getElementsByClassName("warning")[0];
                         const warDiff = document.getElementsByClassName("warning")[1];
@@ -54,30 +54,24 @@ export default function Login({setScreen, screen, setUser, setRole}){
                                 url:"/login",
                                 data: data,
                             })
-                                .then(res => {
-                                    if(res.data){
-                                        setScreen("Main");
-
-                                        setUser(res.data);
-                                        console.log(res.data);
-
-                                        setRole(res.data[1]);
-                                        
-                                    }else{
-                                        warNoText.style.display = "none";
-                                        warDiff.style.display = "block";
-                                    }
-                                })
-                                .catch((res) => {
+                            .then(res => {
+                                if(res.data){
+                                    setScreen("Main");
+                                    setUser(res.data);
+                                    setRole(res.data[1]);
+                                }else{
                                     warNoText.style.display = "none";
                                     warDiff.style.display = "block";
-                                })
-                            // getUser(data)
+                                }
+                            })
+                            .catch((res) => {
+                                warNoText.style.display = "none";
+                                warDiff.style.display = "block";
+                            })
                         }
-                    }}
-                >
+                    }}>
                     Login
-                </button>
+                </Button>
             </div>
         </>
     )
