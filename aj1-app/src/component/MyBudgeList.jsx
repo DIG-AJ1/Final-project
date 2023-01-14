@@ -5,7 +5,24 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import "../style/myBudgeList.css";
 
-export default function MyBudgeList({ screen, setScreen, user, setUser, targetUser, budge, setBudge }) {
+export default function MyBudgeList({ screen, setScreen, user, setUser, targetUser, budge, setBudge, list, resultFlag, setResultFlag }) {
+
+  console.log({user});
+  useEffect(() => {
+    const getApplyList = async () => {
+        try {
+            const response = await axios.get("/resultPublication", {
+                params:{status: user[0]}
+            });
+            const showResult = response.data.filter(elm => elm.unchecked === 1)
+            setResultFlag(showResult);
+            console.log("nami:",response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    getApplyList();
+},[]);
 
   useEffect(() => {
     async function func() {
@@ -29,6 +46,14 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
   return (
     <>
       <Header setScreen={setScreen} screen={screen} user={user} setUser={setUser}/>
+      {resultFlag.length === 0? "" 
+      : <button 
+        onClick={() => {
+          setScreen("ResultPublication");
+          axios.patch("/resultPublication",{ status:user[0]})
+        }}
+      >結果を確認</button>}
+
       <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
       {
         (budge.filter(record => record[1] === 2).length === 0) ?
@@ -45,13 +70,13 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
             </thead>
             <tbody>
               {
-                budge.map((record, key) => {
+                budge.filter(elm => elm[4] === 0).map((record, key) => {
                   if(record[1] === 2) {
                     return(
                       <tr key={key}>
                         <td>{record[0]}</td>
                         <td>{record[3]}</td>
-                        <td ><a href={record[2]} target="_blank">{record[2].substr(0,30)}...</a></td>
+                        <td ><a href={record[2]} target="blank">{record[2].substr(0,30)}...</a></td>
                       </tr>
                     )
                   }
@@ -109,7 +134,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
             </thead>
             <tbody>
               {
-                budge.map((record, key) => {
+                budge.filter(elm => elm[4] === 0).map((record, key) => {
                   if(record[1] === 3) {
                     return(
                       <tr key={key}>

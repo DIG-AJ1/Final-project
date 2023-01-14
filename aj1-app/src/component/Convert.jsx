@@ -7,7 +7,6 @@ import ApproveBudge from "./ApproveBudge";
 import MemberList from "./MemberList";
 import ResultPublication from "./ResultPublication"
 
-
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
     const [user,setUser] = useState([]);
@@ -15,6 +14,7 @@ export default function Convert() {
     const [list, setList] = useState([]);
     const [targetUser, setTargetUser] = useState({});
     const [budge, setBudge] = useState([]);
+    const [resultFlag, setResultFlag] = useState([]);
 
     return (
         <>
@@ -23,10 +23,10 @@ export default function Convert() {
                     (screen === "Login") ?
                         <Login setScreen={setScreen} screen={screen} user={user} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
                             <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} setTargetUser={setTargetUser} budge={budge} setBudge={setBudge}/> : (screen === "MyBudgeList") ?
-                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} budge={budge} setBudge={setBudge} /> : (screen === "RequestBudge") ?
+                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} budge={budge} setBudge={setBudge} resultFlag={resultFlag} setResultFlag={setResultFlag}/> : (screen === "RequestBudge") ?
                                     <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
                                         <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
-                                            <ApproveBudge setScreen={setScreen} screen={screen} user={user} setUser={setUser}/> : (screen === "ResultPublication") ? <ResultPublication /> : <Login />
+                                            <ApproveBudge setScreen={setScreen} screen={screen} user={user} setUser={setUser}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag}/> : <Login />
                 }
             </div>
         </>
