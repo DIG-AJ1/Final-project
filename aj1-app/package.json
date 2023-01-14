@@ -2,6 +2,7 @@
   "name": "aj1-app",
   "version": "0.1.0",
   "private": true,
+  "_proxy": "http://18.183.174.12:8080",
   "proxy": "http://localhost:8080",
   "_proxy": "http://18.183.174.12:8080",
   "dependencies": {

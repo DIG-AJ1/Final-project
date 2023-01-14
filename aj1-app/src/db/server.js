@@ -5,6 +5,7 @@ const knex = require('./index');
 const cors = require('cors');
 
 
+
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -45,25 +46,14 @@ app.post("/login", (req, res) => {
   .where("login_number" ,"=", login_number)
   .first()
   .then((result) => {
-    // console.log(result);
-    // console.log("pwRec: ", result.password);
-    // console.log("pwInput: ", password);
     
-    // { id: 1, loginNumber: 101, password: 'pw1', userName: 'taro' }
     if (password === result.password) {
-      // console.log("PWmatched");
-      // console.log("role: ",result.role);
       let data;
       if (result.role===0) {
         data = [result.id, result.role, result.userName,"requestBudge"]
-        // data = {user_id: result.id, user_role: result.role, user_name: result.userName, str: "requestBudge"}
-        // data = [result.id, result.userName]
        } else{
         data = [result.id, result.role, result.userName,"approveBudge"]
-        // data = {user_id: result.id, user_role: result.role, user_name: result.userName, str: "approveBudge"}
-        // data = [result.id, result.userName]
        }
-      // console.log("data: ",data);
       res.status(200).json(data);
     } else {
       res.status(200).send(undefined);
@@ -118,9 +108,7 @@ app.post("/requestBudge", (req, res) => {
 });
 
 app.post("/memberList", (req, res) => {
-  // console.log("req: ",req.body);
   const user_id = req.body.user_id;
-  // console.log("user_id: ", user_id);
 
   knex.select({
     user_id: "id",
@@ -128,8 +116,6 @@ app.post("/memberList", (req, res) => {
     department_id: "department_id"
   })
   .from("user")
-  // .innerJoin("department", "department.id","=","user.department_id")
-  // .where("department_id" ,"=", data.department_id)
   .then((result) => {
     const data = result;
     res.status(200).send(data);  
