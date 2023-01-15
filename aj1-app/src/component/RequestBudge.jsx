@@ -17,6 +17,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Badge } from "react-bootstrap";
 
+
 export default function RequestBudge({setScreen, screen, admin, user, setUser}){
 
     const [offerBadge,setBadge] = useState("");
@@ -26,6 +27,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
     const [allPeople,setAllpeople] = useState([]);
     const [text, setText] = useState("");
     const [certificationDate, setCertificationDate] = useState(new Date());
+    const [approvedbadge, setApprovedBadge] = useState([])
 
     useEffect(() => {
         axios.get("/assignBudge/budge")
@@ -40,7 +42,22 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
             setPeople(res.data.map((elem) => elem.user_name))
         })
 
+        axios.get("/assignBudge/budge-user",{params:{user_id:user[0]}})
+        .then(res => {
+            setApprovedBadge(res.data.map(elm => elm.budge_name))
+        })
+
     },[])
+
+    // useEffect(() => {
+    //     console.log("バッジリスト",bugdeList);
+    //     console.log("取得済み",approvedbadge);
+    //     console.log(bugdeList.filter(elm => approvedbadge.indexOf(elm[1]) === -1))
+    // },approvedbadge)
+    
+    
+    // console.log(new Set(newBadgeList))
+
 
     return(
         <>
@@ -61,7 +78,8 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
                                 }
                         }}>
                             <option key={999} value="資格を選択">資格を選択</option>
-                            {bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)}
+                            {/* {bugdeList.map((budge, key) => <option key={key} value={budge[1]}>{budge[1]}</option>)} */}
+                            {bugdeList.filter(elm => approvedbadge.indexOf(elm[1]) === -1).map((budge) => <option value={budge[1]}>{budge[1]}</option>)}
                         </Form.Select>
                     </Col>
                 </Row>
@@ -91,7 +109,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
                     <Button 
                         variant="primary"
                         onClick={()=>{
-                            const url = axios.post("/requestBudge",
+                            axios.post("/requestBudge",
                             {
                                 user_id : user[0],
                                 budge_id : offerBadge[0],

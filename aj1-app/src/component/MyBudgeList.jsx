@@ -3,11 +3,12 @@ import "../style/List.css";
 import Header from "./Header";
 import axios from "axios";
 import Table from 'react-bootstrap/Table';
+import useSound from 'use-sound';
+import sound from "../sounds/Bara-ome.mp3";
 import "../style/myBudgeList.css";
 
 export default function MyBudgeList({ screen, setScreen, user, setUser, targetUser, budge, setBudge, list, resultFlag, setResultFlag }) {
 
-  console.log({user});
   useEffect(() => {
     const getApplyList = async () => {
         try {
@@ -16,7 +17,6 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
             });
             const showResult = response.data.filter(elm => elm.unchecked === 1)
             setResultFlag(showResult);
-            console.log("nami:",response.data);
         } catch (error) {
             console.error(error);
         }
@@ -43,6 +43,8 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
     func();
   }, [user]);
 
+  const [play, { stop, pause }] = useSound(sound);
+
   return (
     <>
       <Header setScreen={setScreen} screen={screen} user={user} setUser={setUser}/>
@@ -51,6 +53,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
         onClick={() => {
           setScreen("ResultPublication");
           axios.patch("/resultPublication",{ status:user[0]})
+          play();
         }}
       >結果を確認</button>}
 

@@ -5,16 +5,22 @@ import useSound from 'use-sound';
 import sound from "../sounds/circle-sound1.mp3"
 import { useReward } from 'react-rewards';
 import Header from "./Header";
+import "../style/result.css"
 
 export default function ResultPublication({setScreen, screen, admin, user, setPeople, resultFlag}){
     const { reward, isAnimating } = useReward('rewardid', 'confetti');
-    const [play, { stop, pause }] = useSound(sound)
+    const [play, { stop, pause }] = useSound(sound);
     return(
         <>
             <Header setScreen={setScreen} screen={screen} user={user}/>
-            <div id="resultDiv">
-                {resultFlag.map(elm => <div>{elm.budge_name}</div>)}
-                <div className="resultLabel">承認されました!</div>
+            {resultFlag.map(elm => <div>{elm.budge_name}</div>)}
+            <div className="resultLabel">承認されました!</div>
+            <span 
+                className="cracker" 
+                id="rewardid"
+                onClick={()=>reward()}
+            > 🎉
+            <span id="resultDiv">
                 <button
                     id="result-btn"
                     disabled={isAnimating}
@@ -33,10 +39,10 @@ export default function ResultPublication({setScreen, screen, admin, user, setPe
                         );
                     }}
                 >
-                    <span id="rewardid"/>
                     <img className="resultImage" src={Image}></img>
                 </button>
-            </div>
+            </span>
+             🎉</span>
             </>
     )
 }

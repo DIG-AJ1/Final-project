@@ -5,3 +5,12 @@
     margin-top: -80px;
     padding-top: 80px;
 }
+
+.cracker {
+    text-align: center;
+    font-size: 50px;
+}
+
+#result-btn {
+    border-radius: 300px;
+}
