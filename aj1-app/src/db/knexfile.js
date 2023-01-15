@@ -21,10 +21,10 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: "aws-main-infra-db-postgres.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
+      host: "aws-finalproject-infra-web.cmrbxlzkmnbb.ap-northeast-1.rds.amazonaws.com",
       user: "root",
-      password: "mainpassword",
-      database: "maintestproject",
+      password: "password",
+      database: "finalproject",
       charset: "utf8"
     },
     ssl: {

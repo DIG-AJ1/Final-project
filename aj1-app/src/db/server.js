@@ -14,7 +14,7 @@ app.use("/", express.static(__dirname + "../../public"));
 
 app.use(
   cors({
-    origin: ["http://43.207.75.60:3000"],
+    origin: ["http://13.231.224.242:3000"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
   })
@@ -284,5 +284,5 @@ app.get("/assignBudge/budge", (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Is your server running? Well, you better go catch it, then! http://localhost:${PORT}`);
+  console.log(`Is your server running? Well, you better go catch it, then! http://13.231.224.242:${PORT}`);
 });
