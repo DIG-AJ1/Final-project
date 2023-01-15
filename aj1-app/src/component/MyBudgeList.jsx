@@ -35,7 +35,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
         })
         .then((res) => {
             setBudge(res.data.map((obj) => {
-              return [obj.budge_name,obj.status,obj.url, obj.certification_date];
+              return [obj.budge_name,obj.status,obj.url, obj.certification_date, obj.unchecked];
             }));
         })
         .catch((err) => console.error(err));
