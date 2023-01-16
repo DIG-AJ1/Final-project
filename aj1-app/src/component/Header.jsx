@@ -10,9 +10,9 @@ import "../style/Header.css"
 export default function Header({setScreen, screen, user, setUser}) {
     const [play, { stop, pause }] = useSound(sound)
     return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="shadow p-4 mb-5 bg-dark rounded-pill ms-5 me-5">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="shadow p-4 mt-3 mb-5 bg-dark rounded-pill ms-5 me-5">
       <Container>
-        <img className="me-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabrl2VTWfpp7MbwZp6gVKWPv5C_3Xkx-VlQ&usqp=CAU" alt="" width="30" height="24" />
+        <img className="me-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabrl2VTWfpp7MbwZp6gVKWPv5C_3Xkx-VlQ&usqp=CAU" alt="" width="30" height="24" />
         <Navbar.Brand id=""
             onClick={
                 ()=>{

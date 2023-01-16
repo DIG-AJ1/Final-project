@@ -57,13 +57,14 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
     
     
     // console.log(new Set(newBadgeList))
+    
 
 
     return(
         <>
             <Header setScreen={setScreen} screen={screen} user={user} setUser={setUser}/>
 
-            <h1>取得バッジ申請</h1>
+            <h1 className="mb-5">取得バッジ申請</h1>
             
             <Form className="mb-3 ms-5 me-5">
                 <Row className="justify-content-md-center">
@@ -107,7 +108,8 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
             
             <div className="req-btn">
                 <Button 
-                className="bg-white text-dark border-dark"
+                className="bg-white text-dark border-dark rounded-pill"
+                id="requestButton"
                 onClick={()=>{
                     axios.post("/requestBudge",
                     {

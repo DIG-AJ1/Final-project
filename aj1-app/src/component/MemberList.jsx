@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import Header from "./Header"
+import Container from 'react-bootstrap/Container';
 import Table from "react-bootstrap/esm/Table";
 import axios from "axios";
 import { useState } from "react";
+import "../style/MemberList.css"
 
 export default function MemberList({ screen, setScreen, user , setUser, setTargetUser}) {
 
@@ -27,7 +29,7 @@ export default function MemberList({ screen, setScreen, user , setUser, setTarge
     return(
         <>
             <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
-            <Table striped bordered hover>
+            <Table striped bordered hover className="container bg-light">
                 <thead>
                     <tr>
                         <th>名前</th>

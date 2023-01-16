@@ -1,0 +1,10 @@
+html {
+    /* background: rgba(255, 255, 255, 0.2); */
+    /* background-color: rgb(166, 163, 163); */
+}
+.bg-app {
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.3);
+    background-image: url(https://images.unsplash.com/photo-1531257067-7e9a29c5622f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGJhZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60);
+    background-size: cover;
+}

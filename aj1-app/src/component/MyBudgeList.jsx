@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../style/List.css";
 import Header from "./Header";
 import axios from "axios";
+import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import useSound from 'use-sound';
 import sound from "../sounds/Bara-ome.mp3";
@@ -63,7 +64,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           <h4>表示するものがありません</h4>
         :
         (
-          <Table striped bordered >
+          <Table striped bordered className="container bg-light">
             <thead>
               <tr>
                 <th className="table some-other-class-1">資格名</th>
@@ -95,7 +96,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           <h4>表示するものがありません</h4>
         :
         (
-          <Table striped bordered hover>
+          <Table striped bordered hover className="container bg-light">
             <thead>
               <tr>
                 <th className="table some-other-class-1">資格名</th>
@@ -127,7 +128,7 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           <h4>表示するものがありません</h4>
         :
         (
-          <Table striped bordered hover>
+          <Table striped bordered hover className="container bg-light">
             <thead>
               <tr>
                 <th className="table some-other-class-1">資格名</th>

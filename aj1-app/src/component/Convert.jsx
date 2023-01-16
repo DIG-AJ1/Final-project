@@ -6,6 +6,7 @@ import RequestBudge from "./RequestBudge";
 import ApproveBudge from "./ApproveBudge";
 import MemberList from "./MemberList";
 import ResultPublication from "./ResultPublication"
+import "../style/Convert.css"
 
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
@@ -18,17 +19,19 @@ export default function Convert() {
 
     return (
         <>
-            <div>
-                {
-                    (screen === "Login") ?
-                        <Login setScreen={setScreen} screen={screen} user={user} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
-                            <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} setTargetUser={setTargetUser} budge={budge} setBudge={setBudge}/> : (screen === "MyBudgeList") ?
-                                <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} budge={budge} setBudge={setBudge} resultFlag={resultFlag} setResultFlag={setResultFlag}/> : (screen === "RequestBudge") ?
-                                    <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
-                                        <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
-                                            <ApproveBudge setScreen={setScreen} screen={screen} user={user} setUser={setUser}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag}/> : <Login />
-                }
-            </div>
+            <div className="bg-app">
+                <div className="">
+                    {
+                        (screen === "Login") ?
+                            <Login setScreen={setScreen} screen={screen} user={user} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
+                                <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} setTargetUser={setTargetUser} budge={budge} setBudge={setBudge}/> : (screen === "MyBudgeList") ?
+                                    <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} budge={budge} setBudge={setBudge} resultFlag={resultFlag} setResultFlag={setResultFlag}/> : (screen === "RequestBudge") ?
+                                        <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
+                                            <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
+                                                <ApproveBudge setScreen={setScreen} screen={screen} user={user} setUser={setUser}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag}/> : <Login />
+                    }
+                </div>
+            </div>            
         </>
     );
 }

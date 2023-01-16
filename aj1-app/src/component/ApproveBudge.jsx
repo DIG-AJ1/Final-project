@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Header from "./Header";
 import useSound from 'use-sound';
@@ -28,7 +29,7 @@ export default function ApproveBudge({ screen, setScreen, user, setUser }) {
     return (
         <>
             <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
-            <Table striped bordered hover>
+            <Table striped bordered hover className='container'>
                 <thead>
                     <tr>
                         <th>依頼者名</th>
