@@ -50,6 +50,7 @@ export default function Main({setScreen, screen, setUser, user, setTargetUser}) 
                 }
             <div>
                 <button
+                id="main-bara"
                 className="main-btn"
                 onClick={
                     () => {
