@@ -104,24 +104,23 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
                 </Col>
             </Row>
             <br/>      
-            <Row>
-                <Col xs lg="2">
-                    <Button 
-                        variant="primary"
-                        onClick={()=>{
-                            axios.post("/requestBudge",
-                            {
-                                user_id : user[0],
-                                budge_id : offerBadge[0],
-                                url : text,
-                                certification_date: moment(certificationDate).format("YYYY/MM/DD"),
-                            })                        
-                            .then(() => setScreen("MyBudgeList"))                        
-                            .catch(err => console.log("err:", err));
-                        }
-                        }>申請する</Button>{' '}
-                </Col>
-            </Row>
+            
+            <div className="req-btn">
+                <Button 
+                className="bg-white text-dark border-dark"
+                onClick={()=>{
+                    axios.post("/requestBudge",
+                    {
+                        user_id : user[0],
+                        budge_id : offerBadge[0],
+                        url : text,
+                        certification_date: moment(certificationDate).format("YYYY/MM/DD"),
+                    })                        
+                    .then(() => setScreen("MyBudgeList"))                        
+                    .catch(err => console.log("err:", err));
+                }
+                }>ajone badge</Button>{' '}
+            </div>
         </Form>
     </>
     )

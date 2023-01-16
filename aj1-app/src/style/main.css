@@ -1,0 +1,12 @@
+.main-btn {
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: cyan;
+    box-shadow: 5px 5px 0 0 blue
+}
+
+.main-btn:active {
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+}

@@ -5,13 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import useSound from 'use-sound';
 import sound from "../sounds/end.mp3"
 import Button from 'react-bootstrap/Button';
+import "../style/Header.css"
 
 export default function Header({setScreen, screen, user, setUser}) {
     const [play, { stop, pause }] = useSound(sound)
     return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="shadow p-4 mb-5 bg-dark rounded-pill ms-5 me-5">
       <Container>
-        <Navbar.Brand 
+        <img className="me-2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabrl2VTWfpp7MbwZp6gVKWPv5C_3Xkx-VlQ&usqp=CAU" alt="" width="30" height="24" />
+        <Navbar.Brand id=""
             onClick={
                 ()=>{
                     (screen === "Login")? setScreen("Login"): setScreen("Main");
@@ -25,7 +27,8 @@ export default function Header({setScreen, screen, user, setUser}) {
                 {
                     (screen !== "Login") ?
                         <Button
-                            variant="link"
+                            variant="white"
+                            id="homeButton"
                             className='text-light'
                             onClick={
                                 ()=>{
@@ -39,11 +42,12 @@ export default function Header({setScreen, screen, user, setUser}) {
             {
                 (screen === "MyBudgeList") ?
                     <Button
-                        variant="link"
+                        variant="white"
+                        id="allMemberButton"
                         className='text-light'
                         onClick={() => {
                             setScreen("MemberList")
-                        }}>All Members
+                        }}>All Member
                     </Button>:""
             }
           </Nav>
@@ -52,7 +56,8 @@ export default function Header({setScreen, screen, user, setUser}) {
             {
                 (screen !== "Login") ?
                     <Button
-                        variant="link"
+                        variant="white"
+                        id="logoutButton"
                         className='text-light ms-3'
                         onClick={() => {
                             play();
