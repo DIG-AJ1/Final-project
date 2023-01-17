@@ -1,12 +1,24 @@
 /* .navbar {
     opacity: 0.85;
 } */
+/* .head {
+    margin-top: 4px;
+} */
+#theme {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.button {
+    font-weight: bolder;
+}
+
 #homeButton {
     padding-bottom: 5px;
     position: relative;
 }
 #homeButton::before {
-    background: #ffffff;
+    background: black;
     content: '';
     width: 100%;
     height: 2px;
@@ -28,7 +40,7 @@
     position: relative;
 }
 #allMemberButton::before {
-    background: #ffffff;
+    background: black;
     content: '';
     width: 100%;
     height: 2px;
@@ -50,7 +62,7 @@
     position: relative;
 }
 #logoutButton::before {
-    background: #ffffff;
+    background: black;
     content: '';
     width: 100%;
     height: 2px;

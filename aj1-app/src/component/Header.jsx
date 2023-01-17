@@ -5,15 +5,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import useSound from 'use-sound';
 import sound from "../sounds/end.mp3"
 import Button from 'react-bootstrap/Button';
-import "../style/Header.css"
+import "../style/Header.css";
+import iconImage from "../images/ajDog.png";
 
 export default function Header({setScreen, screen, user, setUser}) {
     const [play, { stop, pause }] = useSound(sound)
     return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="shadow p-4 mt-3 mb-5 bg-dark rounded-pill ms-5 me-5">
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="shadow p-3 mt-4 mb-5 bg-light rounded-pill ms-5 me-5 head">
       <Container>
-        <img className="me-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTabrl2VTWfpp7MbwZp6gVKWPv5C_3Xkx-VlQ&usqp=CAU" alt="" width="30" height="24" />
-        <Navbar.Brand id=""
+        <img className="me-3" src={iconImage} alt="" width="60" height="48" />
+        <Navbar.Brand id="theme"
             onClick={
                 ()=>{
                     (screen === "Login")? setScreen("Login"): setScreen("Main");
@@ -29,7 +30,7 @@ export default function Header({setScreen, screen, user, setUser}) {
                         <Button
                             variant="white"
                             id="homeButton"
-                            className='text-light'
+                            className='text-dark button'
                             onClick={
                                 ()=>{
                                     (screen === "Login")? setScreen("Login"): setScreen("Main");
@@ -44,7 +45,7 @@ export default function Header({setScreen, screen, user, setUser}) {
                     <Button
                         variant="white"
                         id="allMemberButton"
-                        className='text-light'
+                        className='text-dark button'
                         onClick={() => {
                             setScreen("MemberList")
                         }}>All Member
@@ -52,13 +53,17 @@ export default function Header({setScreen, screen, user, setUser}) {
             }
           </Nav>
           <Nav>
-            <Nav className='text-light mt-2'>{user[2]}</Nav>
+            {
+                user[2]? 
+                <Nav className='text-dark mt-2'>ID：{user[2]} さん　</Nav>
+                :""
+            }
             {
                 (screen !== "Login") ?
                     <Button
                         variant="white"
                         id="logoutButton"
-                        className='text-light ms-3'
+                        className='text-dark ms-3 button'
                         onClick={() => {
                             play();
                             setScreen("Login");

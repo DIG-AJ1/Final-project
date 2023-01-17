@@ -7,6 +7,8 @@ import Table from 'react-bootstrap/Table';
 import useSound from 'use-sound';
 import sound from "../sounds/Bara-ome.mp3";
 import "../style/myBudgeList.css";
+import ListGroup from 'react-bootstrap/ListGroup';
+import iconImage from "../images/icon 2.png"
 
 export default function MyBudgeList({ screen, setScreen, user, setUser, targetUser, budge, setBudge, list, resultFlag, setResultFlag }) {
 
@@ -57,14 +59,22 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           play();
         }}
       >結果を確認</button>}
+      <div className="container">
+        <h2 className="container text-light d-flex justify-content-start">
+          ・取得済み資格
+            <img id="iconImage" src={iconImage} alt=""></img>
+          BADGE GET だワン！
+        </h2>
+      </div>
 
-      <h2>🏅🏅🏅  取得済 🏅🏅🏅</h2>
-      {
+        
+        
+            {
         (budge.filter(record => record[1] === 2).length === 0) ?
           <h4>表示するものがありません</h4>
         :
         (
-          <Table striped bordered className="container bg-light">
+          <Table striped bordered className="container bg-light rounded-4" id="table">
             <thead>
               <tr>
                 <th className="table some-other-class-1">資格名</th>
@@ -90,7 +100,9 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           </Table>
         )
       }
-      <h2>🙇🙇🙇 申請中 🙇🙇🙇</h2>
+      <div className="container">
+        <h2 className="container text-light d-flex justify-content-start">・申請中</h2>
+      </div>
       {
         (budge.filter(record => record[1] === 1).length === 0) ?
           <h4>表示するものがありません</h4>
@@ -122,7 +134,9 @@ export default function MyBudgeList({ screen, setScreen, user, setUser, targetUs
           </Table>
         )
       }
-      <h2>🙅🙅🙅 棄却 🙅🙅🙅</h2>
+      <div className="container">
+        <h2 className="container text-light d-flex justify-content-start">・棄却</h2>
+      </div>
       {
         (budge.filter(record => record[1] === 3).length === 0) ?
           <h4>表示するものがありません</h4>

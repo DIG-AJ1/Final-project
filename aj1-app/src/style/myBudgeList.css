@@ -1,5 +1,6 @@
 .table.some-other-class-1{
     width: 30%;
+    border-radius: 25%;
 }
 
 .table.some-other-class-2{
@@ -8,4 +9,13 @@
 
 .table.some-other-class-3{
     width: 50%;
+}
+
+#table {
+    /* border: none; */
+    /* border: rounded; */
+}
+
+#iconImage {
+    height: 40px;
 }

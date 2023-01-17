@@ -16,6 +16,7 @@ export default function Login({screen, setScreen, user, setUser, setRole}){
                     id="user-id"
                     type="text" 
                     placeholder="Login ID"
+                    autoComplete="off"
                 />
                 <input
                     className="intext"

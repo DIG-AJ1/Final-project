@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Table from "react-bootstrap/esm/Table";
 import axios from "axios";
 import { useState } from "react";
-import "../style/MemberList.css"
+import "../style/MemberList.css";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function MemberList({ screen, setScreen, user , setUser, setTargetUser}) {
 
@@ -29,29 +30,50 @@ export default function MemberList({ screen, setScreen, user , setUser, setTarge
     return(
         <>
             <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
-            <Table striped bordered hover className="container bg-light">
-                <thead>
-                    <tr>
-                        <th>名前</th>
-                    </tr>
-                </thead>
-                <tbody >
+            <div className="container">
+                <ol className="">
+                    <li className="" >DIG 従業員氏名</li>
                     {
                         userListArray.map((obj, key) => {
                             return(
-                                <tr
+                                <li className="names"
                                     onClick={()=>{
-                                        setScreen("MyBudgeList")
-                                        setTargetUser(obj)
-                                    }} 
-                                    key={key}>
-                                    <td>{obj.user_name}</td>
-                                </tr>
+                                    setScreen("MyBudgeList")
+                                    setTargetUser(obj)
+                                }} 
+                                key={key}>
+                                {obj.user_name}</li>
                             )
                         })
                     }
-                </tbody>
-            </Table>
+                </ol>
+            </div>
         </>
+        // <>
+        //     <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
+        //     <Table striped bordered hover className="container bg-light">
+        //         <thead>
+        //             <tr>
+        //                 <th>名前</th>
+        //             </tr>
+        //         </thead>
+        //         <tbody >
+        //             {
+        //                 userListArray.map((obj, key) => {
+        //                     return(
+        //                         <tr
+        //                             onClick={()=>{
+        //                                 setScreen("MyBudgeList")
+        //                                 setTargetUser(obj)
+        //                             }} 
+        //                             key={key}>
+        //                             <td>{obj.user_name}</td>
+        //                         </tr>
+        //                     )
+        //                 })
+        //             }
+        //         </tbody>
+        //     </Table>
+        // </>
     )
 }

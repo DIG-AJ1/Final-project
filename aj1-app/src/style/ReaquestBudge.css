@@ -10,11 +10,24 @@
   #passwordHelpBlock{
     display: inline;
   }
-/* 
-#requestButton {
-    padding-bottom: 5px;
+
+  #requestButton {
+    box-shadow: 5px 5px 0 0 grey;
+    border-radius: 20px;
+  }
+
+  #requestButton:active {
+    box-shadow: none;
     position: relative;
+    top: 5px;
+    left: 5px;
 }
+
+#reqImage {
+  width: 40%;
+}
+
+/* 
 #requestButton::before {
     background: #000000;
     content: '';
