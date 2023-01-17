@@ -1,30 +1,29 @@
 import React from "react";
-// import Button from "reacr-bootstrap/Button";
-import "../style/Login.css"
-import "../style/button.css"
-import Hedder from "./Hedder"
+import Button from "react-bootstrap/Button";
+import "../style/Login.css";
+import "../style/button.css";
+import Header from "./Header";
 import axios from "axios";
 
-
-export default function Login({setScreen, screen, setUser}){
-
-    const baseURL = "http://localhost:8080/"
+export default function Login({screen, setScreen, user, setUser, setRole}){
 
     return (
         <>
-            <Hedder setScreen={setScreen} screen={screen}/>
+            <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
             <div className="form">
                 <input 
                     className="intext"
                     id="user-id"
                     type="text" 
                     placeholder="Login ID"
+                    autoComplete="off"
                 />
                 <input
                     className="intext"
                     id="pass"
                     type="text"
                     placeholder="Password"
+                    autoComplete="off"
                 />
 
                 <div className="warning">
@@ -35,9 +34,9 @@ export default function Login({setScreen, screen, setUser}){
                     ユーザーが存在しないまたはパスワードが違います
                 </div>
 
-                <button
-                    className="log-btn"
-                    variant="primary"
+                <Button
+                    className="mb-2"
+                    variant="secondary"
                     onClick={() => {
                         const warNoText = document.getElementsByClassName("warning")[0];
                         const warDiff = document.getElementsByClassName("warning")[1];
@@ -52,32 +51,29 @@ export default function Login({setScreen, screen, setUser}){
                             warNoText.style.display = "block";
                             warDiff.style.display = "none";
                         } else {
-                            // setScreen("List");
                             axios({
                                 method: "post",
-                                url:`${baseURL}login`,
+                                url:"/login",
                                 data: data,
                             })
-                                .then(res => {
-                                    if(res.data){
-                                        setScreen("List");
-                                        setUser(res.data[0]);
-                                        
-                                    }else{
-                                        warNoText.style.display = "none";
-                                        warDiff.style.display = "block";
-                                    }
-                                })
-                                .catch((res) => {
+                            .then(res => {
+                                if(res.data){
+                                    setScreen("Main");
+                                    setUser(res.data);
+                                    setRole(res.data[1]);
+                                }else{
                                     warNoText.style.display = "none";
                                     warDiff.style.display = "block";
-                                })
-                            // getUser(data)
+                                }
+                            })
+                            .catch((res) => {
+                                warNoText.style.display = "none";
+                                warDiff.style.display = "block";
+                            })
                         }
-                    }}
-                >
+                    }}>
                     Login
-                </button>
+                </Button>
             </div>
         </>
     )

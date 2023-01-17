@@ -1,0 +1,47 @@
+
+#inputPassWordLabel{
+    display: inline;
+  }
+  
+  #inputPassword5{
+    display: inline;
+  }
+  
+  #passwordHelpBlock{
+    display: inline;
+  }
+
+  #requestButton {
+    box-shadow: 5px 5px 0 0 grey;
+    border-radius: 20px;
+  }
+
+  #requestButton:active {
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+#reqImage {
+  width: 40%;
+}
+
+/* 
+#requestButton::before {
+    background: #000000;
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transform-origin: right top;
+    transform: scale(0, 1);
+    transition: transform .3s;
+}
+#requestButton:hover::before {
+    transform-origin: left top;
+    transform: scale(1, 1);
+} */

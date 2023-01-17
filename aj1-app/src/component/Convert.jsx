@@ -1,26 +1,37 @@
 import React, {useState} from "react";
 import Login from "./Login";
 import Main from "./Main";
-import {BrowserRouter,Route,Switch} from "react-router-dom"
-import List from "./List";
-import GivingBadge from "./GivingBudge";
-
+import MyBudgeList from "./MyBudgeList";
+import RequestBudge from "./RequestBudge";
+import ApproveBudge from "./ApproveBudge";
+import MemberList from "./MemberList";
+import ResultPublication from "./ResultPublication"
+import "../style/Convert.css"
 
 export default function Convert() {
     const [screen,setScreen] = useState("Login");
-    const [user,setUser] = useState("");
+    const [user,setUser] = useState([]);
+    const [role,setRole] = useState(0); // 0:承認権限なし 1:承認権限あり
     const [list, setList] = useState([]);
+    const [targetUser, setTargetUser] = useState({});
+    const [budge, setBudge] = useState([]);
+    const [resultFlag, setResultFlag] = useState([]);
 
-    
     return (
-        <div>
-        {
-            (screen === "Login") ?
-                <Login setScreen={setScreen} screen={screen} setUser={setUser} setList={setList}/> :
-                (screen === "List")?
-                    <List setScreen={setScreen} screen={screen} user={user} list={list}/>:
-                    <GivingBadge setScreen={setScreen} screen={screen}/>
-        }
-        </div>
+        <>
+            <div className="bg-app">
+                <div className="">
+                    {
+                        (screen === "Login") ?
+                            <Login setScreen={setScreen} screen={screen} user={user} setUser={setUser} setList={setList} setRole={setRole}/> : (screen === "Main") ?
+                                <Main setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} setTargetUser={setTargetUser} budge={budge} setBudge={setBudge}/> : (screen === "MyBudgeList") ?
+                                    <MyBudgeList setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} budge={budge} setBudge={setBudge} resultFlag={resultFlag} setResultFlag={setResultFlag}/> : (screen === "RequestBudge") ?
+                                        <RequestBudge setScreen={setScreen} screen={screen} user={user}/> : (screen === "MemberList") ?
+                                            <MemberList setScreen={setScreen} user={user} targetUser={targetUser} setTargetUser={setTargetUser}/> : (screen === "ApproveBudge" && role === 1) ?
+                                                <ApproveBudge setScreen={setScreen} screen={screen} user={user} setUser={setUser}/> : (screen === "ResultPublication") ? <ResultPublication setScreen={setScreen} screen={screen} setUser={setUser} user={user} list={list} targetUser={targetUser} resultFlag={resultFlag}/> : <Login />
+                    }
+                </div>
+            </div>            
+        </>
     );
 }
