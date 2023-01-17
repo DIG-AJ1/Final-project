@@ -35,6 +35,7 @@ export default function Login({screen, setScreen, user, setUser, setRole}){
                 </div>
 
                 <Button
+                    id="login-btn"
                     className="mb-2"
                     variant="secondary"
                     onClick={() => {

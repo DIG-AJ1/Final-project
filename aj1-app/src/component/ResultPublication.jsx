@@ -13,7 +13,7 @@ export default function ResultPublication({setScreen, screen, admin, user, setPe
     return(
         <>
             <Header setScreen={setScreen} screen={screen} user={user}/>
-            {resultFlag.map(elm => <div>{elm.budge_name}</div>)}
+            {resultFlag.map(elm => <div className="resultLabel">{elm.budge_name}</div>)}
             <div className="resultLabel">承認されました!</div>
             <span 
                 className="cracker" 

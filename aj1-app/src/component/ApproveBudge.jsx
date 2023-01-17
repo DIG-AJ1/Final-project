@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 import Header from "./Header";
 import useSound from 'use-sound';
 import sound from "../sounds/eriko-approved.mp3"
+import "../style/approveBadge.css"
 
 export default function ApproveBudge({ screen, setScreen, user, setUser }) {
 
@@ -29,7 +30,7 @@ export default function ApproveBudge({ screen, setScreen, user, setUser }) {
     return (
         <>
             <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
-            <Table striped bordered hover className='container'>
+            <Table striped bordered hover className='container' id="approveTable">
                 <thead>
                     <tr>
                         <th>依頼者名</th>

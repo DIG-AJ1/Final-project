@@ -11,11 +11,27 @@
     width: 50%;
 }
 
-#table {
-    /* border: none; */
-    /* border: rounded; */
+tbody, td, tfoot, th, thead, tr  { 
+    background-color:transparent;
+    border-style: none;
 }
 
 #iconImage {
     height: 40px;
 }
+
+#my-btn {
+    font-size: 30px;
+    margin-bottom: 15px;
+    box-shadow: 5px 5px 0 0 grey;
+    border-radius: 20px;
+}
+
+#my-btn:active {
+    box-shadow: none;
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+
+
