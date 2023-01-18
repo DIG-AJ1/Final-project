@@ -89,7 +89,7 @@ export default function RequestBudge({setScreen, screen, admin, user, setUser}){
             
             <div className="req-btn">
                 <Button 
-                className="bg-white text-dark border-dark rounded-pill"
+                className="text-dark border-dark rounded-pill"
                 id="requestButton"
                 onClick={()=>{
                     axios.post("/requestBudge",

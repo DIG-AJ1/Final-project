@@ -32,7 +32,7 @@ export default function MemberList({ screen, setScreen, user , setUser, setTarge
             <Header screen={screen} setScreen={setScreen} user={user} setUser={setUser}/>
             <div className="container">
                 <ol className="">
-                    <li className="" >DIG 従業員氏名</li>
+                    <li className="" ><a id="namesList">DIG 従業員氏名</a></li>
                     {
                         userListArray.map((obj, key) => {
                             return(

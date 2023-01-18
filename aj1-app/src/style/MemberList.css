@@ -7,12 +7,14 @@ ol {
 li {
     font-size: 30px;
     width: 50%;
-    border: solid 1px;
-    background-color: aqua;
     margin: 20px auto;
+    font: bolder
+    /* border-bottom-style: solid 1px white; */
+    /* border: solid 1px;
+    background-color: aqua;
     border-radius: 13px ;
     background-color: whitesmoke;
-    box-shadow: 10px 10px 0 0 grey;
+    box-shadow: 10px 10px 0 0 grey; */
 }
 li.names {
     font-size: 30px;
@@ -22,15 +24,22 @@ li.names {
     margin: 20px auto;
     border-radius: 30px ;
     background-color: whitesmoke;
-    box-shadow: 10px 10px 0 0 grey;
+    box-shadow: 5px 5px 0 0 grey;
 }
 
 li.names:active {
     box-shadow: none;
     position: relative;
-    top: 10px;
-    left: 10px;
+    top: 5px;
+    left: 5px;
 }
  li.names:hover {
     background-color: rgba(255, 255, 255, 0.3);
  }
+
+#namesList {
+    background-color: transparent;
+    color: white;
+
+    /* text-decoration:underline */
+}
